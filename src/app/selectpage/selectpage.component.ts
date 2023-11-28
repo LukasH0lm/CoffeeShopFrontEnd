@@ -12,8 +12,11 @@ import {Router} from "@angular/router";
 })
 export class SelectpageComponent {
   constructor(private router: Router) {}
-  navigateToOrderPage() {
-    this.router.navigate(['/Order']);
+
+
+
+  navigateToCoffeeTypePage(companyName: string) {
+    this.router.navigate(['/Business', companyName, 'CoffeeType'] );
   }
 
 

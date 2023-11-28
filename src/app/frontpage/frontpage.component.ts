@@ -13,12 +13,10 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class FrontpageComponent {
   constructor(private router: Router) {}
-  navigateToOrderPage() {
-    this.router.navigate(['/Order']);
-  }
+
 
   navigateToSelectPage() {
-    this.router.navigate(['/Select']);
+    this.router.navigate(['/Business']);
   }
 
 }

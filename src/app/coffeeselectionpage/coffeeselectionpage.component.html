@@ -1,0 +1,20 @@
+<body>
+<mat-grid-list cols="5" rowHeight="300px">
+  <mat-grid-tile *ngFor="let coffee of coffees">
+
+    <div>
+    <h1>{{ coffee.name }}</h1>
+
+        {{ coffee.description }}
+
+      <div>
+        <img src="{{ coffee.picture }}"  width="125" height="125" alt="">
+      </div>
+
+
+    </div>
+
+
+  </mat-grid-tile>
+</mat-grid-list>
+</body>

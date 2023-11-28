@@ -1,0 +1,14 @@
+
+
+
+mat-grid-tile {
+  margin-top: 50px;
+  background-color : #c6ae9d;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+mat-grid-tile:hover {
+  background-color: #b3968c;
+}

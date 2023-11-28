@@ -6,31 +6,25 @@ fra order side, så skal de ikke komme ind på select page-->
 
 
 <body>
-<div class="selectorbox">
+<div class="selectorbox" (click)="navigateToCoffeeTypePage('Espressia-Eksklusivo')">
   <h1>Espressia Eksklusivo</h1>
 
   <div>
     Beskrivelse
   </div>
 
-  <div>
-    <button mat-raised-button color="primary" (click)="navigateToOrderPage()">Espressia Eksklusivo les go</button>
-  </div>
 
 </div>
-<div class="selectorbox">
+<div class="selectorbox" (click)="navigateToCoffeeTypePage('AromaÆstetik')">
   <h1>AromaÆstetik</h1>
 
   <div>
     HJÆLP ALEXANDER
   </div>
 
-  <div>
-    <button mat-raised-button color="primary" (click)="navigateToOrderPage()">AromaÆstetik les go</button>
-  </div>
 
 </div>
-<div class="selectorbox">
+<div class="selectorbox" (click)="navigateToCoffeeTypePage('BaristaMaestro')">
   <h1>BaristaMaestro</h1>
 
 
@@ -38,9 +32,6 @@ fra order side, så skal de ikke komme ind på select page-->
     Beskrivelse
   </div>
 
-  <div>
-    <button mat-raised-button color="primary" (click)="navigateToOrderPage()">BaristaMaestro les go</button>
-  </div>
 
 
 </div>
