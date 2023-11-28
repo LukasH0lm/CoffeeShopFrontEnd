@@ -17,4 +17,8 @@ export class FrontpageComponent {
     this.router.navigate(['/Order']);
   }
 
+  navigateToSelectPage() {
+    this.router.navigate(['/Select']);
+  }
+
 }
