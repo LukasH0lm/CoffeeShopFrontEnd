@@ -1,0 +1,17 @@
+
+body {
+
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.coffeeInformation {
+  width: 1000px;
+  height: 800px;
+  background-color: #c6ae9d;
+
+}

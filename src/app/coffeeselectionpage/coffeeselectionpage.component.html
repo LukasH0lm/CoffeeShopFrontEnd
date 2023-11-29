@@ -1,6 +1,6 @@
 <body>
 <mat-grid-list cols="5" rowHeight="300px">
-  <mat-grid-tile *ngFor="let coffee of coffees">
+  <mat-grid-tile *ngFor="let coffee of coffees" (click)="navigateToPremadeCoffeePage(coffee)">
 
     <div>
     <h1>{{ coffee.name }}</h1>

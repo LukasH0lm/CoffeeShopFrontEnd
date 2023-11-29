@@ -5,6 +5,7 @@ import {SelectpageComponent} from "./selectpage/selectpage.component";
 import {CoffeetypepageComponent} from "./coffeetypepage/coffeetypepage.component";
 import {CustomcoffeepageComponent} from "./customcoffeepage/customcoffeepage.component";
 import {CoffeeselectionpageComponent} from "./coffeeselectionpage/coffeeselectionpage.component";
+import {PremadecoffeepageComponent} from "./premadecoffeepage/premadecoffeepage.component";
 
 
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'Business/:companyName/CoffeeType', component: CoffeetypepageComponent },
     { path: 'Business/:companyName/CoffeeType/CustomCoffee', component: CustomcoffeepageComponent },
     { path: 'Business/:companyName/CoffeeType/CoffeeSelection', component: CoffeeselectionpageComponent },
+    { path: 'Business/:companyName/CoffeeType/CoffeeSelection/:coffeeName', component: PremadecoffeepageComponent },
     { path: 'Order/:companyName', component: OrderpageComponent },
 
 

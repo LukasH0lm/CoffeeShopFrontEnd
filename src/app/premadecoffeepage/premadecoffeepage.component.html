@@ -1,0 +1,24 @@
+<body>
+
+
+
+<div class=coffeeInformation *ngIf="coffee">
+  <h1>{{ coffee.name }}</h1>
+  <p>{{ coffee.description }}</p>
+
+  <div>
+    <img src="{{ coffee.picture }}"  width="250" height="250" alt="">
+  </div>
+
+
+  <h2>Ingredients</h2>
+  <ul>
+    <li *ngFor="let ingredient of coffee.ingredients">{{ ingredient.name  }} {{ ingredient.quantity}}</li>
+  </ul>
+
+
+</div>
+
+
+
+</body>
