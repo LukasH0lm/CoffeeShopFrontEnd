@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {Coffee} from "./coffee.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CoffeeService} from "../coffeeService";
+import {CoffeeService} from "../services/premadeCoffeeService";
 import {CurrentCoffeeService} from "../services/currentcoffee.service";
 
 

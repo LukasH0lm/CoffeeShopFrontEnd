@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Coffee } from '../coffeeselectionpage/coffee.model';
-import { CoffeeService } from '../coffeeService';
+import { CoffeeService } from './premadeCoffeeService';
 
 @Injectable({
   providedIn: 'root',

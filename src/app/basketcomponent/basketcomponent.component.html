@@ -4,6 +4,11 @@
 <mat-dialog-content
   *ngFor="let item of items">  {{ item.name }}
 
+  <!-- https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/#mat-icon-list-category-action -->
+  <button class="deleteButton" mat-icon-button (click)="removeItem(item)">
+    <mat-icon class="deleteIcon">delete</mat-icon>
+  </button>
+
   <div>
     <ul>
       <li *ngFor="let ingredient of item.ingredients">{{ ingredient.name  }} {{ ingredient.quantity}}</li>
@@ -15,6 +20,6 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
-  <button mat-button >Clear</button>
+  <button mat-button (click)="clearCart()">Clear</button>
   <button mat-button mat-dialog-close>Order</button>
 </mat-dialog-actions>

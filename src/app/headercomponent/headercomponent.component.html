@@ -12,11 +12,17 @@
 
 <div class="HeaderProfilLogind">
   <a id="HeaderProfilLogindId" routerLink="">  <img src="assets/pictures/customer.png" alt="LogindBillede"></a>
+
 </div>
 
-  <div>
-    <button (click)="openCartPopup()"> Basket </button>
+  <div class="HeaderBasket">
+    <!-- https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/#mat-icon-list-category-action -->
+    <button mat-icon-button (click)="openCartPopup()">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
   </div>
+
+
 
 <router-outlet></router-outlet>
 </div>

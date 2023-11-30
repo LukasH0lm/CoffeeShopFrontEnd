@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Coffee } from './coffeeselectionpage/coffee.model';
+import { Coffee } from '../coffeeselectionpage/coffee.model';
 
 @Injectable({
   providedIn: 'root',
@@ -265,7 +265,7 @@ export class CoffeeService {
     return this.coffees;
   }
 
-  getCoffeeByName(name: string): Coffee | undefined {
+  getCoffeeByName(name: string) {
     return this.coffees.find((coffee) => coffee.name === name);
   }
 

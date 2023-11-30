@@ -21,7 +21,9 @@ export class BasketService {
     this.items = [];
   }
 
+
   removeItem(coffee: Coffee): void {
+    // Skal nok være på et guid den tjekker her, ellers sletter den bare alle med det navn i kurven
     this.items = this.items.filter((item) => item.name !== coffee.name);
   }
 
