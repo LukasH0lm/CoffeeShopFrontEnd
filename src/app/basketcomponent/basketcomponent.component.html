@@ -1,0 +1,20 @@
+
+
+<h2 mat-dialog-title>Basket</h2>
+<mat-dialog-content
+  *ngFor="let item of items">  {{ item.name }}
+
+  <div>
+    <ul>
+      <li *ngFor="let ingredient of item.ingredients">{{ ingredient.name  }} {{ ingredient.quantity}}</li>
+    </ul>
+  </div>
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button >Clear</button>
+  <button mat-button mat-dialog-close>Order</button>
+</mat-dialog-actions>

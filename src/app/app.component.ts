@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {ActivatedRoute, RouterLink, RouterOutlet} from '@angular/router';
 import {HeadercomponentComponent} from "./headercomponent/headercomponent.component";
 import {FootercomponentComponent} from "./footercomponent/footercomponent.component";
+
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,14 @@ import {FootercomponentComponent} from "./footercomponent/footercomponent.compon
 })
 export class AppComponent {
   title = 'CoffeeShopFrontEnd';
+
+
 }
+
+
+
+
+
+
+
+

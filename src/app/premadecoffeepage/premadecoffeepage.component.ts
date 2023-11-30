@@ -4,7 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 import {CoffeeService} from "../coffeeService";
 import {Coffee} from "../coffeeselectionpage/coffee.model";
-
+import {CurrentCoffeeService} from "../services/currentcoffee.service";
+import {BasketService} from "../services/basket.service";
 @Component({
   selector: 'app-premadecoffeepage',
   standalone: true,
@@ -14,14 +15,14 @@ import {Coffee} from "../coffeeselectionpage/coffee.model";
 })
 export class PremadecoffeepageComponent {
 
-  coffeeName: string;
   coffee: Coffee | undefined;
-  constructor(private coffeeService: CoffeeService, private route: ActivatedRoute, private router: Router) {
+  constructor(private currentCoffeeService: CurrentCoffeeService, private basketService: BasketService) {
 
-    this.coffeeName = this.route.snapshot.params['coffeeName'];
-
-    this.coffee = this.coffeeService.getCoffeeByName(this.coffeeName);
+    this.coffee = this.currentCoffeeService.getCurrentCoffee();
   }
 
+  addToCart(): void {
+    this.basketService.addToCart(this.coffee);
+  }
 
 }

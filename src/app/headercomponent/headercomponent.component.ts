@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterLink, RouterOutlet} from "@angular/router";
+import {BasketPopupService} from "../basketcomponent/basketpopup.service";
 
 @Component({
   selector: 'app-headercomponent',
@@ -10,5 +11,10 @@ import {RouterLink, RouterOutlet} from "@angular/router";
   styleUrl: './headercomponent.component.css'
 })
 export class HeadercomponentComponent {
+
+  constructor(private popupBasketService : BasketPopupService ) {}
+  openCartPopup(): void {
+    this.popupBasketService.openCartPopup();
+  }
 
 }
