@@ -15,6 +15,8 @@ import {MatIconModule} from '@angular/material/icon';
 })
 export class HeadercomponentComponent {
 
+
+
   constructor(private popupBasketService : BasketPopupService ) {}
   openCartPopup(): void {
     this.popupBasketService.openCartPopup();

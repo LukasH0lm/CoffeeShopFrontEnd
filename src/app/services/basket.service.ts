@@ -9,6 +9,9 @@ export class BasketService {
 
   addToCart(coffee: Coffee | undefined): void {
     if (coffee) {
+
+      coffee.ingredients = coffee.ingredients.filter(ingredient => ingredient.checked);
+
       this.items.push(coffee);
     }
   }

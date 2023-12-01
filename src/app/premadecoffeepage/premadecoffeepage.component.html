@@ -14,7 +14,13 @@
   <h2>Ingredients</h2>
   <ul>
     <!-- Indgredient.quantity skal fjernes (debug) -->
-    <li *ngFor="let ingredient of coffee.ingredients">{{ ingredient.name  }} {{ ingredient.quantity}}</li>
+    <li *ngFor="let ingredient of coffee.ingredients">{{ ingredient.name  }} {{ ingredient.quantity}}
+
+      <mat-checkbox [(ngModel)]="ingredient.checked"></mat-checkbox>
+
+    </li>
+
+
   </ul>
 
   <div>
