@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {Coffee} from "./coffee.model";
+import {Coffee} from "../models/coffee.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CoffeeService} from "../services/premadeCoffeeService";
 import {CurrentCoffeeService} from "../services/currentcoffee.service";

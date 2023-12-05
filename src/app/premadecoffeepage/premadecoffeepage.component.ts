@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 import {CoffeeService} from "../services/premadeCoffeeService";
-import {Coffee} from "../coffeeselectionpage/coffee.model";
+import {Coffee} from "../models/coffee.model";
 import {CurrentCoffeeService} from "../services/currentcoffee.service";
 import {BasketService} from "../services/basket.service";
 import {MatIconModule} from "@angular/material/icon";

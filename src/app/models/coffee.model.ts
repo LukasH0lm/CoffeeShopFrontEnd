@@ -1,10 +1,10 @@
-import {CoffeeIngredient} from "./ingredient.model";
+import {IngredientsModel} from "./Ingredients.model";
 
 export interface Coffee {
   name: string;
   description: string;
   picture: string;
-  ingredients: CoffeeIngredient[];
+  ingredients: IngredientsModel[];
 
 
 }

@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Coffee } from '../coffeeselectionpage/coffee.model';
+import { Coffee } from '../models/coffee.model';
 import { CoffeeService } from './premadeCoffeeService';
 
 @Injectable({
