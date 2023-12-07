@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {BasketService} from "../services/basket.service";
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-
+import {CookiesService} from "../services/cookies.service";
 
 
 @Component({
@@ -16,13 +16,16 @@ import {MatIconModule} from "@angular/material/icon";
 })
 export class BasketcomponentComponent {
 
-  constructor(private basketService: BasketService) {}
+  constructor(private basketService: BasketService, private cookiesService: CookiesService) {}
+
 
   items = this.basketService.getItems();
 
   clearCart(): void {
     this.basketService.clearCart();
     this.items = this.basketService.getItems();
+
+
   }
 
   removeItem(item: any): void {

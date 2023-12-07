@@ -9,6 +9,8 @@ import {BasketService} from "../services/basket.service";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
+
+
 @Component({
   selector: 'app-premadecoffeepage',
   standalone: true,
@@ -33,6 +35,7 @@ export class PremadecoffeepageComponent {
 
   addToCart(): void {
     this.basketService.addToCart(this.coffee);
+
   }
 
 }
