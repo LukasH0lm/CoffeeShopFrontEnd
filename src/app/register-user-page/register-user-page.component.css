@@ -1,0 +1,32 @@
+.registerUserClass{
+  text-align: center;
+  padding: 100px 700px 100px 700px;
+}
+.registerUserBorderClass{
+  padding-bottom: 50px;
+  padding-top: 50px;
+  background-color: #c6ae9d;
+  border-style: outset;
+}
+.registerUserClass label{
+  padding-right: 10px;
+}
+#userEmailText{
+  margin-left: -25px;
+}
+#userFirstName{
+  margin-left: -45px;
+}
+#userLastName{
+  margin-left: -60px;
+}
+#userAddress{
+  margin-left: -50px;
+}
+#userPNumber{
+  margin-left: -110px;
+}
+#userPasswordText{
+  margin-left: -65px
+}
+
