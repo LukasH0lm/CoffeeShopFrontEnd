@@ -1,18 +1,11 @@
-body {
-  display: flex;
+mat-grid-tile {
+  margin-top: 50px;
+  background-color : #c6ae9d;
+  align-content: center;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  text-align: center;
 }
 
-.selectorbox {
-  cursor: pointer;
-  width: 300px;
-  height: 300px;
-  background-color: #c6ae9d;
-  margin: 0 10px;
-}
-.selectorbox:hover {
+mat-grid-tile:hover {
   background-color: #b3968c;
 }

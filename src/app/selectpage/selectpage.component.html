@@ -1,38 +1,11 @@
 
 
-<!--Vi skal have noget her, som gemmer hvad brugeren har valgt
-Vi skal også bruge dette, så når brugeren har valgt noget, og går frem og tilbage
-fra order side, så skal de ikke komme ind på select page-->
-
-
 <body>
-<div class="selectorbox" (click)="navigateToCoffeeTypePage('Espressia-Eksklusivo')">
-  <h1>Espressia Eksklusivo</h1>
-
-  <div>
-    Beskrivelse
-  </div>
+<mat-grid-list cols="5" rowHeight="300px">
+  <mat-grid-tile *ngFor="let store of stores" (click)="navigateToCoffeeTypePage(store.name)">
+    {{store.name}}
 
 
-</div>
-<div class="selectorbox" (click)="navigateToCoffeeTypePage('AromaÆstetik')">
-  <h1>AromaÆstetik</h1>
-
-  <div>
-    HJÆLP ALEXANDER
-  </div>
-
-
-</div>
-<div class="selectorbox" (click)="navigateToCoffeeTypePage('BaristaMaestro')">
-  <h1>BaristaMaestro</h1>
-
-
-  <div>
-    Beskrivelse
-  </div>
-
-
-
-</div>
+  </mat-grid-tile>
+</mat-grid-list>
 </body>

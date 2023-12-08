@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {StoresModel} from "../../models/Stores.model";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -12,16 +13,15 @@ export class StoresService {
   constructor(private http: HttpClient) { }
 
 
-  stores: StoresModel[] = [];
 
-  getStores() {
-    this.http.get<StoresModel[]>(this.baseUrl + "/stores").subscribe((stores) => {
-      this.stores = stores;
-      console.log(this.stores);
-    });
-    return this.stores;
+
+  getStores(): Observable<StoresModel[]> {
+
+    return this.http.get<StoresModel[]>(this.baseUrl + "/stores");
 
   }
+
+
 
 
 
