@@ -1,8 +1,14 @@
 
 export interface CoffeeCupsModel {
 
-  Size : number;
-  CustomerId : number;
-  StoreId: number;
-  ItemId: number;
+  size : number;
+  customerId : string;
+  storeId: string;
+  itemId: string;
+  itemType: number;
+  description: string;
+  image: string;
+  name: string;
+  price: number;
+
 }

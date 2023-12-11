@@ -3,11 +3,10 @@ import {OrdersModel} from "./Orders.model";
 
 export interface StoresModel {
 
-  storeId: number;
+  storeId: string;
   name: string;
-  brandId: number;
-  brand: BrandsModel | null;
-  orders: OrdersModel[] | null;
+  brandId: string;
+
 
 
 }

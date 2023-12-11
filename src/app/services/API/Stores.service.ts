@@ -21,6 +21,10 @@ export class StoresService {
 
   }
 
+  getStoreIdByName(stores: StoresModel[], storeName: string): string | undefined {
+    return stores.find((stores) => stores.name === storeName)?.storeId;
+  }
+
 
 
 
