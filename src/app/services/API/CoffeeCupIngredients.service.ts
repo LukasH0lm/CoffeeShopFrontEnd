@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {CoffeeCupIngredientsModel} from "../../models/CoffeeCupIngredients.model";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+
 
 
 @Injectable({
@@ -8,25 +10,21 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CoffeeCupIngredientsService {
 
-  private baseUrl = "http://localhost:5196/api/CoffeeCupIngredients";
+  private baseUrl = "http://localhost:5196/api";
   constructor(private http: HttpClient) { }
 
 
 
-  // Midlertidig data indtil api virker :)
-  private coffeeCupIngredients: CoffeeCupIngredientsModel[] = [
-
-  ];
+  getIngredientsByCoffeeCupId(id: string | undefined): Observable<CoffeeCupIngredientsModel[]> {
 
 
+    return this.http.get<CoffeeCupIngredientsModel[]>(this.baseUrl + "/CoffeeCupIngredient" + "/" + id);
 
-  getCoffeeCupIngredients(): CoffeeCupIngredientsModel[] {
-    return this.coffeeCupIngredients;
+
   }
 
-  getCoffeeCupIngredientsById(id: number) {
-    return this.coffeeCupIngredients.find((coffeeCupIngredients) => coffeeCupIngredients.CoffeeCupId === id);
-  }
+
+
 
 
 }

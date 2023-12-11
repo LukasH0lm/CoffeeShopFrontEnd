@@ -2,29 +2,32 @@
 
 
 
-<div class=coffeeInformation *ngIf="coffee">
+<div class=coffeeInformation *ngIf="coffeeCup | async as coffee">
   <h1>{{ coffee.name }}</h1>
   <p>{{ coffee.description }}</p>
 
   <div>
-    <img src="{{ coffee.picture }}"  width="250" height="250" alt="">
+    <img src="{{ coffee.image }}"  width="250" height="250" alt="">
   </div>
 
 
   <h2>Ingredients</h2>
   <ul>
-    <!-- Ingredient.quantity skal fjernes (debug) -->
-    <li *ngFor="let ingredient of coffee.ingredients">{{ ingredient.Name  }} {{ ingredient.StockQuantity}}
 
-      <mat-checkbox [(ngModel)]="ingredient.checked"></mat-checkbox>
+   <!--
+   Kan ikke lave det før vi har sat det op i API
+   <li *ngFor="let ingredient of coffeeCupIngredients | async">
+      {{ ingredient.ingredient }}
+      <mat-checkbox [(ngModel)]="ingredient.che"></mat-checkbox>
+    </li>-->
 
-    </li>
+
 
 
   </ul>
 
   <div>
-    <button (click)="addToCart()">Add to basket</button>
+    <button (click)="addToCart(coffee)">Add to basket</button>
 
 
   </div>

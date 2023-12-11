@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
-import { Coffee } from '../models/coffee.model';
 import {CookiesService} from "./cookies.service";
+import {Observable} from "rxjs";
+import {CoffeeCupsModel} from "../models/CoffeeCups.model";
+import {ItemModel} from "../models/Item.model";
 
 
 @Injectable({
@@ -8,7 +10,9 @@ import {CookiesService} from "./cookies.service";
 })
 export class BasketService {
 
-  private items: Coffee[] = [];
+  private items: ItemModel[] = [];
+
+
 
 
   constructor(private cookiesService: CookiesService) {
@@ -24,25 +28,19 @@ export class BasketService {
   }
 
 
+  addToCart(coffeeCup: CoffeeCupsModel): void {
+    if (coffeeCup) {
 
-
-  addToCart(coffee: Coffee | undefined): void {
-    if (coffee) {
-
-      coffee.ingredients = coffee.ingredients.filter(ingredient => ingredient.checked);
-
-      this.items.push(coffee);
+      this.items.push(coffeeCup);
 
       this.cookiesService.setCookie('basket', JSON.stringify(this.items));
 
       console.log(this.items);
 
-
-
     }
   }
 
-  getItems(): Coffee[] {
+  getItems(): ItemModel[] {
     return this.items;
   }
 
@@ -52,9 +50,9 @@ export class BasketService {
   }
 
 
-  removeItem(coffee: Coffee): void {
+  removeItem(items: ItemModel): void {
     // Skal nok være på et guid den tjekker her, ellers sletter den bare alle med det navn i kurven
-    this.items = this.items.filter((item) => item.name !== coffee.name);
+    this.items = this.items.filter((item) => item.name !== item.name);
     this.cookiesService.setCookie('basket', JSON.stringify(this.items));
   }
 

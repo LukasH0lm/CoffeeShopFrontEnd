@@ -13,20 +13,10 @@ export class ItemService {
 
 
 
-  // Midlertidig data indtil api virker :)
-  private item: ItemModel[] = [
-
-  ];
 
 
 
-  getItems(): ItemModel[] {
-    return this.item;
-  }
 
-  getItemById(id: number) {
-    return this.item.find((item) => item.ItemId === id);
-  }
 
 
 }

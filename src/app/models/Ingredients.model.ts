@@ -1,9 +1,9 @@
 export interface IngredientsModel {
-  Name: string;
-  Price: number;
-  StockQuantity: number;
-  MeasurementUnit: number;
-  StoreId: number;
-  IngredientId: number;
+  name: string;
+  price: number;
+  stockQuantity: number;
+  measurementUnit: number;
+  storeId: number;
+  ingredientId: number;
   checked: boolean;
 }

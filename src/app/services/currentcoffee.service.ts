@@ -2,20 +2,23 @@
 import { Injectable } from '@angular/core';
 import { Coffee } from '../models/coffee.model';
 import { CoffeeService } from './premadeCoffeeService';
+import {CoffeeCupsModel} from "../models/CoffeeCups.model";
+import {CoffeeCupsService} from "./API/CoffeeCups.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root',
 })
 export class CurrentCoffeeService {
 
-  currentCoffee: Coffee | undefined;
+  currentCoffee: Observable<CoffeeCupsModel | undefined> | undefined;
 
-  constructor(private coffeeService: CoffeeService) {
+  constructor(private coffeeCupsService: CoffeeCupsService) {
 
   }
 
   setCurrentCoffeeByName(name: string): void {
-    const selectedCoffee = this.coffeeService.getCoffeeByName(name);
+    const selectedCoffee = this.coffeeCupsService.getCoffeeCupByName(name);
 
     if (selectedCoffee) {
       this.currentCoffee = selectedCoffee;

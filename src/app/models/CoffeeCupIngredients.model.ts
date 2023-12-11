@@ -1,8 +1,11 @@
+import {CoffeeCupsModel} from "./CoffeeCups.model";
+import {IngredientsModel} from "./Ingredients.model";
 
 export interface CoffeeCupIngredientsModel {
-
-    Quantity: number;
-    CoffeeCupId: number;
-    IngredientId: number;
+    coffeeCupId: string;
+    coffeeCup: CoffeeCupsModel[];
+    ingredientId: string;
+    ingredient: IngredientsModel[];
+    quantity: number;
 
 }

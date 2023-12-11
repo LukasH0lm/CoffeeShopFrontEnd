@@ -1,9 +1,9 @@
 
 export interface ItemModel {
-  ItemType: number;
-  Description: string;
-  Image: string;
-  Name: string;
-  Price: number;
-  ItemId: number;
+  itemType: number;
+  description: string;
+  image: string;
+  name: string;
+  price: number;
+  itemId: string;
 }
