@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {Coffee} from "../models/coffee.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CoffeeService} from "../services/premadeCoffeeService";
 import {CurrentCoffeeService} from "../services/currentcoffee.service";
 import {CoffeeCupsModel} from "../models/CoffeeCups.model";
 import {CoffeeCupsService} from "../services/API/CoffeeCups.service";
-import {forkJoin, Observable} from "rxjs";
+import {forkJoin} from "rxjs";
 import {StoresService} from "../services/API/Stores.service";
 import {StoresModel} from "../models/Stores.model";
 
@@ -22,8 +20,7 @@ import {StoresModel} from "../models/Stores.model";
 export class CoffeeselectionpageComponent implements OnInit{
 
   coffeesCups: CoffeeCupsModel[] = [];
-  premadeCoffeeCups: CoffeeCupsModel | any;
-  premadeCoffeeCupsByStore: CoffeeCupsModel | any;
+  CoffeeCupsByStore: CoffeeCupsModel | any;
   stores : StoresModel[] = [];
   companyName: string;
   currentStoreId: string | undefined;
@@ -45,12 +42,10 @@ export class CoffeeselectionpageComponent implements OnInit{
     forkJoin({
       coffees: this.coffeeCupsService.getCoffeeCups(),
       stores: this.storesService.getStores(),
-      preMadeCoffees: this.coffeeCupsService.getPreMadeCoffeeCups()
     }).subscribe(
-      ({ coffees, stores, preMadeCoffees }) => {
+      ({ coffees, stores }) => {
         this.coffeesCups = coffees;
         this.stores = stores;
-        this.premadeCoffeeCups = preMadeCoffees;
 
         this.getCurrentStoreId();
       },
@@ -62,10 +57,11 @@ export class CoffeeselectionpageComponent implements OnInit{
 
   getCurrentStoreId() {
     this.currentStoreId = this.storesService.getStoreIdByName(this.stores, this.companyName);
+    console.log("getCurrentStoreId: ", this.currentStoreId)
     //vi har opdatere premadecoffeecupsbystore her, da vi skal sikre os at vi har opdateret currentStoreId før vi kalder getPremadeCoffeeCupsByStore.
-    this.coffeeCupsService.getPreMadeCoffeeCupsByStore(this.currentStoreId).subscribe(
-      preMadeCoffeesByStore => {
-        this.premadeCoffeeCupsByStore = preMadeCoffeesByStore;
+    this.coffeeCupsService.getCoffeeCupsByStore(this.currentStoreId).subscribe(
+      CoffeeCupsByStore => {
+        this.CoffeeCupsByStore = CoffeeCupsByStore;
       },
       error => {
         console.error('Error getCurrentStoreId:', error);

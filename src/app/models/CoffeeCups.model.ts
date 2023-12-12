@@ -1,14 +1,20 @@
+import {IngredientsModel} from "./Ingredients.model";
 
 export interface CoffeeCupsModel {
 
-  size : number;
-  customerId : string;
-  storeId: string;
   itemId: string;
+  name: string;
+  size : number;
   itemType: number;
   description: string;
-  image: string;
-  name: string;
   price: number;
+  image: string;
+  storeId: string;
+  ingredients: IngredientsModel[];
+
+
+
+
+
 
 }

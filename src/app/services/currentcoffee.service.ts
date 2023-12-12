@@ -1,7 +1,5 @@
 
 import { Injectable } from '@angular/core';
-import { Coffee } from '../models/coffee.model';
-import { CoffeeService } from './premadeCoffeeService';
 import {CoffeeCupsModel} from "../models/CoffeeCups.model";
 import {CoffeeCupsService} from "./API/CoffeeCups.service";
 import {Observable} from "rxjs";
