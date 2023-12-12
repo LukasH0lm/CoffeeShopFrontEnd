@@ -8,25 +8,20 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CustomersService {
 
-  private baseUrl = "http://localhost:5196/api/Customers";
+  private baseUrl = "http://localhost:5196/api";
   constructor(private http: HttpClient) { }
 
 
-
-  // Midlertidig data indtil api virker :)
-  private customers: CustomersModel[] = [
-
-  ];
+  //"/customers/add"
 
 
-
-  getCustomers(): CustomersModel[] {
-    return this.customers;
+  createLogin(customer: CustomersModel | undefined) {
+    return this.http.post(this.baseUrl + "/customers/add", customer);
   }
 
-  getCustomerById(id: number) {
-    return this.customers.find((customers) => customers.CustomerId === id);
-  }
+
+
+
 
 
 }

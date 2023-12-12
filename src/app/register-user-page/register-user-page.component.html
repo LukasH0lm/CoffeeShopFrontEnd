@@ -11,27 +11,27 @@
 
     <form>
       <label id="userEmailText" for="email">Mail:</label>
-      <input type="email" id="email" name="email"><br><br>
+      <input type="email" id="email" name="email" [(ngModel)]="user.email"><br><br>
 
       <label id="userFirstName" for="UserFirstName">fornavn:</label>
-      <input type="text" id="firstnam" name="firstName"><br><br>
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName"><br><br>
 
-      <label id="userLastName" for="userLastname">Efternavn:</label>
-      <input type="text" id="LastName" name="lastName"><br><br>
+      <label id="userLastName" for="userLastname">Efternavn: </label>
+      <input type="text" id="LastName" name="lastName" [(ngModel)]="user.lastName"><br><br>
 
       <label id="userAddress" for="userAddress">Adresse:</label>
-      <input type="text" id="adress" name="address"><br><br>
+      <input type="text" id="address" name="address" [(ngModel)]="user.address"><br><br>
 
       <label id="userPNumber" for="userPNumber">Telefon nummer:</label>
-      <input type="text" id="pNumber" name="pNumber"><br><br>
+      <input type="text" id="pNumber" name="pNumber" [(ngModel)]="user.phone"><br><br>
 
       <label id="userPasswordText" for="userPasswordText">Password:</label>
-      <input type="password" id="password" name="password"><br><br>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password"><br><br>
     </form>
 
 
     <div class="createUserButtonClass">
-      <button id="createLogindButtonId" mat-raised-button color="primary" > Opret bruger</button>
+      <button id="createLogindButtonId" mat-raised-button color="primary" (click)="createLogin()" > Opret bruger</button>
     </div>
 
 
