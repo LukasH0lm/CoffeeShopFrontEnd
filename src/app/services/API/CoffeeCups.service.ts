@@ -11,8 +11,6 @@ import {Coffee} from "../../models/coffee.model";
 })
 export class CoffeeCupsService {
 
-
-
   private baseUrl = "http://localhost:5196/api";
 
   private coffeeCups = this.http.get<CoffeeCupsModel[]>(this.baseUrl + "/CoffeeCup");
