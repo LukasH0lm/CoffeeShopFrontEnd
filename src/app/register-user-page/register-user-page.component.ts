@@ -32,6 +32,7 @@ export class RegisterUserPageComponent {
   createLogin(): void {
     this.customersService.createLogin(this.user).subscribe((response) => {
       this.router.navigate(['/Logind']);
+      ////console.log(response);
     });
   }
 }
