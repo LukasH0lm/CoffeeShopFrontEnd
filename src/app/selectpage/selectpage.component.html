@@ -1,6 +1,6 @@
+<body xmlns="http://www.w3.org/1999/html">
 
-
-<body>
+<div class="selectBodyClass">
 <mat-grid-list cols="5" rowHeight="300px">
   <mat-grid-tile *ngFor="let store of stores" (click)="navigateToCoffeeTypePage(store.name)">
     {{store.name}}
@@ -8,4 +8,16 @@
 
   </mat-grid-tile>
 </mat-grid-list>
+
+  <div class="selectBodyText">
+    <h1 id="selectBodyHeader1">Vælg et Caffe hus som du vil bestille din</h1>
+
+    <img id="selectBodyImg" src="assets/pictures/coffeecup.png" alt="KaffeKop">
+
+    <h1 id="selectBodyHeader2">fra</h1>
+  </div>
+
+
+
+</div>
 </body>

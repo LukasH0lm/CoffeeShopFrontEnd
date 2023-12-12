@@ -23,6 +23,6 @@ export const routes: Routes = [
     { path: 'Business/:companyName/CoffeeType/CoffeeSelection/:coffeeName', component: PremadecoffeepageComponent },
     { path: 'Order/:companyName', component: OrderpageComponent },
     { path: 'Logind', component: LogIndPageComponent },
-  { path: 'RegisterBruger', component: RegisterUserPageComponent },
-
+    { path: 'RegisterBruger', component: RegisterUserPageComponent },
+    { path: 'Logind', component: LogIndPageComponent },
 ];

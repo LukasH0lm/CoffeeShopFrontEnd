@@ -5,12 +5,13 @@ import {Router} from "@angular/router";
 import {StoresService} from "../services/API/Stores.service";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {StoresModel} from "../models/Stores.model";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @Component({
   selector: 'app-selectpage',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatGridListModule],
+  imports: [CommonModule, MatButtonModule, MatGridListModule, MatIconModule],
   templateUrl: './selectpage.component.html',
   styleUrl: './selectpage.component.css'
 })
