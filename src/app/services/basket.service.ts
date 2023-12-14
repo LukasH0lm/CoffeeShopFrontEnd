@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {CookiesService} from "./cookies.service";
-import {CoffeeCupsModel} from "../models/CoffeeCups.model";
 import {ItemModel} from "../models/Item.model";
 import {BasketItemModel} from "../models/basketItem.model";
+
 
 
 @Injectable({
@@ -20,8 +20,12 @@ export class BasketService {
   }
 
   loadBasketData(): void {
+
     const basket = this.cookiesService.getCookie('basket');
+
+
     if (basket) {
+
       this.basket = JSON.parse(basket);
     }
   }
@@ -30,7 +34,7 @@ export class BasketService {
   addToCart(currentItem: ItemModel): void {
 
 
-    const existingItem = this.basket.find((item) => item.item === currentItem);
+    const existingItem = this.basket.find((item) => item.item.itemId === currentItem.itemId);
 
     if (existingItem) {
       console.log('Item already exists in the basket:', existingItem);
@@ -85,5 +89,7 @@ export class BasketService {
     console.log('Updated basket:', this.basket);
 
   }
+
+
 
 }
