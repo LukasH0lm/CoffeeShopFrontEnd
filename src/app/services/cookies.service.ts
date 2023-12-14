@@ -20,5 +20,9 @@ export class CookiesService {
 
   }
 
+  deleteCookie(name: string): void {
+    this.cookieService.delete(name);
+  }
+
 
 }

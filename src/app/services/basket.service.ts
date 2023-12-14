@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {CookiesService} from "./cookies.service";
-import {Observable} from "rxjs";
 import {CoffeeCupsModel} from "../models/CoffeeCups.model";
 import {ItemModel} from "../models/Item.model";
+import {BasketItemModel} from "../models/basketItem.model";
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import {ItemModel} from "../models/Item.model";
 })
 export class BasketService {
 
-  private items: ItemModel[] = [];
+  private basket: BasketItemModel[] = [];
 
 
 
@@ -18,42 +18,72 @@ export class BasketService {
   constructor(private cookiesService: CookiesService) {
     this.loadBasketData();
   }
-// Check evt routing, for at se hvilken forretning der er valgt, og gem en kurv for hver forretning.
-  // Dette skal først gøres efter valg af forretning. For home og det der kommer før, skal det bare være den seneste kurv der vises.
+
   loadBasketData(): void {
     const basket = this.cookiesService.getCookie('basket');
     if (basket) {
-      this.items = JSON.parse(basket);
+      this.basket = JSON.parse(basket);
     }
   }
 
 
-  addToCart(coffeeCup: CoffeeCupsModel): void {
-    if (coffeeCup) {
+  addToCart(currentItem: ItemModel): void {
 
-      this.items.push(coffeeCup);
 
-      this.cookiesService.setCookie('basket', JSON.stringify(this.items));
+    const existingItem = this.basket.find((item) => item.item === currentItem);
 
-      console.log(this.items);
-
+    if (existingItem) {
+      console.log('Item already exists in the basket:', existingItem);
+      existingItem.quantity++;
+    } else {
+      console.log('Item not in the basket. Adding:', currentItem);
+      this.basket.push({ item: currentItem, quantity: 1 });
     }
+
+    this.cookiesService.setCookie('basket', JSON.stringify(this.basket));
+    console.log('Updated basket:', this.basket);
+
   }
 
-  getItems(): ItemModel[] {
-    return this.items;
+
+
+
+
+  getItems(): BasketItemModel[] {
+    return this.basket;
   }
 
   clearCart(): void {
-    this.items = [];
-    this.cookiesService.setCookie('basket', JSON.stringify(this.items));
+    this.basket = [];
+    this.cookiesService.setCookie('basket', JSON.stringify(this.basket));
   }
 
 
-  removeItem(items: ItemModel): void {
-    // Skal nok være på et guid den tjekker her, ellers sletter den bare alle med det navn i kurven
-    this.items = this.items.filter((item) => item.name !== item.name);
-    this.cookiesService.setCookie('basket', JSON.stringify(this.items));
+  removeItem(item: BasketItemModel): void {
+
+    const existingItemIndex = this.basket.findIndex((basketItem) => basketItem === item);
+
+
+    const existingItem = this.basket.find((basketItem) => basketItem === item);
+
+    if (existingItem) {
+      console.log('Item already exists in the basket:', existingItem);
+      if (existingItem.quantity > 1) {
+        existingItem.quantity--;
+      } else {
+        //Remove item from basket
+        this.basket.splice(existingItemIndex, 1);
+        console.log('Item removed from basket:', existingItem);
+
+      }
+    }else {
+      console.log('Item not in the basket');
+    }
+
+
+    this.cookiesService.setCookie('basket', JSON.stringify(this.basket));
+    console.log('Updated basket:', this.basket);
+
   }
 
 }

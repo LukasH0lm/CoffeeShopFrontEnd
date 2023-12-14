@@ -5,6 +5,8 @@ import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {CookiesService} from "../services/cookies.service";
+import {ItemModel} from "../models/Item.model";
+import {BasketItemModel} from "../models/basketItem.model";
 
 
 @Component({
@@ -28,7 +30,7 @@ export class BasketcomponentComponent {
 
   }
 
-  removeItem(item: any): void {
+  removeItem(item: BasketItemModel): void {
     this.basketService.removeItem(item);
     this.items = this.basketService.getItems();
   }

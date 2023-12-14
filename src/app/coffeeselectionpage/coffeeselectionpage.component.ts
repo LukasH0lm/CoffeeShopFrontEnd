@@ -45,6 +45,7 @@ export class CoffeeselectionpageComponent implements OnInit{
     }).subscribe(
       ({ coffees, stores }) => {
         this.coffeesCups = coffees;
+        console.log("coffeesCups: ", this.coffeesCups)
         this.stores = stores;
 
         this.getCurrentStoreId();
@@ -59,14 +60,19 @@ export class CoffeeselectionpageComponent implements OnInit{
     this.currentStoreId = this.storesService.getStoreIdByName(this.stores, this.companyName);
     console.log("getCurrentStoreId: ", this.currentStoreId)
     //vi har opdatere premadecoffeecupsbystore her, da vi skal sikre os at vi har opdateret currentStoreId før vi kalder getPremadeCoffeeCupsByStore.
+    if (this.currentStoreId !== undefined) {
     this.coffeeCupsService.getCoffeeCupsByStore(this.currentStoreId).subscribe(
       CoffeeCupsByStore => {
         this.CoffeeCupsByStore = CoffeeCupsByStore;
+        console.log("CoffeeCupsByStore: ", CoffeeCupsByStore)
       },
       error => {
         console.error('Error getCurrentStoreId:', error);
       }
     );
+    } else {
+      console.error('Error getCurrentStoreId: Current store ID is undefined.');
+    }
   }
 
 

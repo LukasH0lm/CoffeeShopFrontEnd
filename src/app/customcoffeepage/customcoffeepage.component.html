@@ -1,17 +1,1 @@
 
-
-<h4>Vælg de ingredienser du vil have i din "Custom kaffe"</h4>
-
-
-<div *ngFor="let selectedIngredient of selectedIngredients; let i = index">
-  <mat-form-field>
-    <mat-label>Ingredient {{ i + 1 }}</mat-label>
-    <mat-select [(value)]="selectedIngredients[i]">
-      <mat-option *ngFor="let ingredient of customCoffeeIngredients | async" [value]="ingredient.name" [disabled]="isIngredientDisabled(ingredient)">
-        {{ ingredient.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<button mat-button (click)="addIngredient()">+</button>

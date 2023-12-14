@@ -12,6 +12,7 @@ import {Observable, of, switchMap} from "rxjs";
 import {IngredientsService} from "../services/API/Ingredients.service";
 import {CoffeeCupIngredientsModel} from "../models/CoffeeCupIngredients.model";
 import {IngredientsModel} from "../models/Ingredients.model";
+import {MeasurementUnit} from "../enum/measurementUnit.enum";
 import {CoffeeCupIngredientsService} from "../services/API/CoffeeCupIngredients.service";
 
 
@@ -25,7 +26,7 @@ import {CoffeeCupIngredientsService} from "../services/API/CoffeeCupIngredients.
 export class PremadecoffeepageComponent {
 
   coffeeCup: Observable<CoffeeCupsModel | undefined> | undefined;
-  coffeeCupIngredients: Observable<CoffeeCupIngredientsModel[]> | undefined;
+
 
 
   constructor(private currentCoffeeService: CurrentCoffeeService, private coffeeCupIngredientsService: CoffeeCupIngredientsService, private basketService: BasketService, private route: ActivatedRoute) {
@@ -40,17 +41,7 @@ export class PremadecoffeepageComponent {
 
 
 
-    this.coffeeCupIngredients = this.coffeeCup?.pipe(
-      switchMap(coffeeCup => {
-        if (coffeeCup && coffeeCup.itemId) {
-          console.log("Coffee cup ingredients found");
-          return this.coffeeCupIngredientsService.getIngredientsByCoffeeCupId(coffeeCup.itemId);
-        } else {
-          console.log("No coffee cup ingredients found");
-          return of([]);
-        }
-      })
-    ) || of([]);
+
   }
 
 
@@ -62,4 +53,6 @@ export class PremadecoffeepageComponent {
       console.error('Trying to add undefined cup to the cart.' + cup);
     }
   }
+
+  protected readonly MeasurementUnit = MeasurementUnit;
 }

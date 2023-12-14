@@ -6,15 +6,20 @@
 
     <form>
       <label id="emailText" for="email">Mail:</label>
-      <input type="email" id="email" name="email"><br><br>
+      <input type="email" id="email" name="email" [(ngModel)]="emailTextField"><br><br>
       <label id="passwordText" for="password">Password:</label>
-      <input type="password" id="password" name="password"><br><br>
+      <input type="password" id="password" name="password" [(ngModel)]="passwordTextField"><br><br>
     </form>
 
 
       <div class="loginButtonClass">
-        <button id="logindButtonId" mat-raised-button color="primary" routerLink="RegisterB">Log ind</button>
+        <button id="logindButtonId" mat-raised-button color="primary" (click)="login()">Log ind</button>
       </div>
+
+    <div>
+      <mat-checkbox id="rememberMeCheckboxId" [(ngModel)]="rememberMeCheckbox">Husk mig</mat-checkbox>
+    </div>
+
 
       <div class="createLoginButtonClass">
         <button id="createLogindButtonId" mat-raised-button color="primary" routerLink="/RegisterBruger" >Opret Bruger</button>

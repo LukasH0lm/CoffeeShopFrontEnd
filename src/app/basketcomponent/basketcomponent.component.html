@@ -2,7 +2,7 @@
 
 <h2 mat-dialog-title>Basket</h2>
 <mat-dialog-content
-  *ngFor="let item of items">  {{ item.name }}
+  *ngFor="let item of items">  {{ item.item.name }} Antal:{{ item.quantity }}
 
   <!-- https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/#mat-icon-list-category-action -->
   <button class="deleteButton" mat-icon-button (click)="removeItem(item)">

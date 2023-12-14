@@ -25,7 +25,13 @@ export class CoffeeCupsService {
 
   getCoffeeCupsByStore(storeId: string | undefined): Observable<CoffeeCupsModel[]> {
     return this.getCoffeeCups().pipe(
-      map(coffeeCups => coffeeCups.filter(coffeeCup => coffeeCup.storeId === storeId))
+      map(coffeeCups => {
+        if (storeId === undefined) {
+          console.log("No storeId");
+          return []; // return nothing if no storeId
+        }
+        return coffeeCups.filter(coffeeCup => coffeeCup.storeIds !== undefined && coffeeCup.storeIds.includes(storeId));
+      })
     );
   }
 

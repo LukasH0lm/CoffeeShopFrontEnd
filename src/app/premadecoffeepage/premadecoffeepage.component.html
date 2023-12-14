@@ -14,12 +14,14 @@
   <h2>Ingredients</h2>
   <ul>
 
-   <!--
-   Kan ikke lave det før vi har sat det op i API
-   <li *ngFor="let ingredient of coffeeCupIngredients | async">
-      {{ ingredient.ingredient }}
-      <mat-checkbox [(ngModel)]="ingredient.che"></mat-checkbox>
-    </li>-->
+
+
+    <li *ngFor="let ingredient of coffee.ingredients">
+      {{ ingredient.name }}   <!--{{ ingredient.quantity }}{{MeasurementUnit[ingredient.measurementUnit]}}-->
+
+
+
+    </li>
 
 
 

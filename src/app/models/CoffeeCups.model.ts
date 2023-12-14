@@ -9,7 +9,7 @@ export interface CoffeeCupsModel {
   description: string;
   price: number;
   image: string;
-  storeId: string;
+  storeIds: string[];
   ingredients: IngredientsModel[];
 
 

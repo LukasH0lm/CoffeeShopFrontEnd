@@ -1,9 +1,10 @@
+import {MeasurementUnit} from "../enum/measurementUnit.enum";
+
+
 export interface IngredientsModel {
+  ingredientId: string;
   name: string;
   price: number;
-  stockQuantity: number;
-  measurementUnit: number;
-  storeId: number;
-  ingredientId: number;
-  checked: boolean;
+  measurementUnit: MeasurementUnit;
+//  checked: boolean;
 }

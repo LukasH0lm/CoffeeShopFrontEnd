@@ -23,7 +23,9 @@ export class CustomcoffeepageComponent implements OnInit {
 
 
   customCoffeeIngredients: Observable<IngredientsModel[]> | undefined;
-  selectedIngredients: IngredientsModel[] = [];
+
+
+
 
   constructor(private ingredientsService: IngredientsService) {
 
@@ -35,20 +37,24 @@ export class CustomcoffeepageComponent implements OnInit {
   }
 
 
-  addIngredient(): void {
-    if (this.customCoffeeIngredients) {
-      this.customCoffeeIngredients.subscribe(ingredients => {
-        if (ingredients.length > this.selectedIngredients.length) {
-          this.selectedIngredients.push(ingredients[this.selectedIngredients.length]);
-        }
-      });
-    }
-  }
 
-  isIngredientDisabled(ingredient: IngredientsModel): boolean {
-    return this.selectedIngredients.some(selected => selected.name === ingredient.name);
-  }
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
 
 
 
