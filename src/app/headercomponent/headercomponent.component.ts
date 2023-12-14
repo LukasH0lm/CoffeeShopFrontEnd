@@ -35,6 +35,7 @@ export class HeadercomponentComponent implements OnInit{
 
 
   openCartPopup(): void {
+
     this.popupBasketService.openCartPopup();
   }
 

@@ -2,24 +2,29 @@
 
 <h2 mat-dialog-title>Basket</h2>
 <mat-dialog-content
-  *ngFor="let item of items">  {{ item.item.name }} Antal:{{ item.quantity }}
+  *ngFor="let item of items">
+  <h3>
+    {{ item.item.name }}
+    {{ item.quantity }}x
 
-  <!-- https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/#mat-icon-list-category-action -->
-  <button class="deleteButton" mat-icon-button (click)="removeItem(item)">
-    <mat-icon class="deleteIcon">delete</mat-icon>
-  </button>
+    <!-- https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/#mat-icon-list-category-action -->
+    <button class="deleteButton" mat-icon-button (click)="removeItem(item)">
+      <mat-icon class="deleteIcon">delete</mat-icon>
+    </button>
 
-  <div>
-    <ul>
-      <!--<li *ngFor="let ingredient of item.ingredients">{{ ingredient.Name  }} {{ ingredient.StockQuantity}}</li>-->
-    </ul>
-  </div>
+
+  </h3>
+  Pris: {{ item.subTotal }} ,-
 
 
 
 </mat-dialog-content>
+
+<p> Total: {{ totalPriceBasket }} ,- </p>
+
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
   <button mat-button (click)="clearCart()">Clear</button>
+
   <button mat-button mat-dialog-close>Order</button>
 </mat-dialog-actions>

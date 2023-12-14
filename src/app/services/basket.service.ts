@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {CookiesService} from "./cookies.service";
 import {ItemModel} from "../models/Item.model";
 import {BasketItemModel} from "../models/basketItem.model";
+import {BehaviorSubject, Observable} from "rxjs";
 
 
 
@@ -13,6 +14,9 @@ export class BasketService {
   private basket: BasketItemModel[] = [];
 
 
+  private totalPriceSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
+  totalPrice: Observable<number> = this.totalPriceSubject.asObservable();
 
 
   constructor(private cookiesService: CookiesService) {
@@ -28,8 +32,23 @@ export class BasketService {
 
       this.basket = JSON.parse(basket);
     }
+
+    this.updateTotalPrice();
   }
 
+
+  updateTotalPrice() {
+    this.totalPriceSubject.next(this.getTotal());
+  }
+
+
+  getTotal(): number {
+    let total = 0;
+    this.basket.forEach((item) => {
+      total += item.subTotal;
+    });
+    return total;
+  }
 
   addToCart(currentItem: ItemModel): void {
 
@@ -39,12 +58,14 @@ export class BasketService {
     if (existingItem) {
       console.log('Item already exists in the basket:', existingItem);
       existingItem.quantity++;
+      existingItem.subTotal = existingItem.quantity * currentItem.price;
     } else {
       console.log('Item not in the basket. Adding:', currentItem);
-      this.basket.push({ item: currentItem, quantity: 1 });
+      this.basket.push({ item: currentItem, quantity: 1, subTotal: currentItem.price});
     }
 
     this.cookiesService.setCookie('basket', JSON.stringify(this.basket));
+    this.updateTotalPrice()
     console.log('Updated basket:', this.basket);
 
   }
@@ -65,15 +86,16 @@ export class BasketService {
 
   removeItem(item: BasketItemModel): void {
 
-    const existingItemIndex = this.basket.findIndex((basketItem) => basketItem === item);
+    const existingItemIndex = this.basket.findIndex((basketItem) => basketItem.item.itemId === item.item.itemId);
 
 
-    const existingItem = this.basket.find((basketItem) => basketItem === item);
+    const existingItem = this.basket.find((basketItem) => basketItem.item.itemId === item.item.itemId);
 
     if (existingItem) {
       console.log('Item already exists in the basket:', existingItem);
       if (existingItem.quantity > 1) {
         existingItem.quantity--;
+        existingItem.subTotal = existingItem.quantity * item.item.price;
       } else {
         //Remove item from basket
         this.basket.splice(existingItemIndex, 1);

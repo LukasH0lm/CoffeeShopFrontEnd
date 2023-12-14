@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 import {CurrentCoffeeService} from "../services/currentcoffee.service";
 import {BasketService} from "../services/basket.service";
@@ -8,11 +8,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {CoffeeCupsModel} from "../models/CoffeeCups.model";
-import {Observable, of, switchMap} from "rxjs";
-import {IngredientsService} from "../services/API/Ingredients.service";
-import {CoffeeCupIngredientsModel} from "../models/CoffeeCupIngredients.model";
-import {IngredientsModel} from "../models/Ingredients.model";
-import {MeasurementUnit} from "../enum/measurementUnit.enum";
+import {Observable } from "rxjs";
 import {CoffeeCupIngredientsService} from "../services/API/CoffeeCupIngredients.service";
 
 
@@ -54,5 +50,6 @@ export class PremadecoffeepageComponent {
     }
   }
 
-  protected readonly MeasurementUnit = MeasurementUnit;
+
+
 }
