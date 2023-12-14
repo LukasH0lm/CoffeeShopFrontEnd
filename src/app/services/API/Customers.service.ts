@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CustomersModel} from "../../models/Customers.model";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -17,8 +18,8 @@ export class CustomersService {
     return this.http.post(this.baseUrl + "/customers/add", customer);
   }
 
-  getCustomerByEmail(email: string) {
-    return this.http.get(this.baseUrl + "/customers/email" + email);
+  getCustomerByEmail(email: string) : Observable<CustomersModel> {
+    return this.http.get<CustomersModel>(this.baseUrl + "/customers/email/" + email)
   }
 
   async checkLoginResponse(email: string, password: string): Promise<boolean> {

@@ -11,6 +11,10 @@ export class CookiesService {
 
   }
 
+  setCookieForSevenDays(name: string, value: string): void {
+    this.cookieService.set(name, value, 7);
+  }
+
   setCookie(name: string, value: string): void {
     this.cookieService.set(name, value);
   }

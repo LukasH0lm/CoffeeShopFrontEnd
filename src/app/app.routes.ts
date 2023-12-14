@@ -24,5 +24,5 @@ export const routes: Routes = [
     { path: 'Order/:companyName', component: OrderpageComponent },
     { path: 'Logind', component: LogIndPageComponent },
     { path: 'RegisterBruger', component: RegisterUserPageComponent },
-    { path: 'Logind', component: LogIndPageComponent },
+
 ];
