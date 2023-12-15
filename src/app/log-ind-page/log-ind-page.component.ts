@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 import {Router, RouterLink} from "@angular/router";
-import {CustomersService} from "../services/API/Customers.service";
-import {CustomersModel} from "../models/Customers.model";
+import {UsersService} from "../services/API/Users.service";
+import {UserModel} from "../models/User.model";
 import {FormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {CurrentUserService} from "../services/currentUser.service";
@@ -27,7 +27,7 @@ export class LogIndPageComponent {
 
 
 
- constructor(private customerService: CustomersService, private currentUserService: CurrentUserService,
+ constructor(private customerService: UsersService, private currentUserService: CurrentUserService,
              private cookiesService: CookiesService, private snackBar: MatSnackBar, private router: Router) {
 
 
@@ -52,7 +52,7 @@ export class LogIndPageComponent {
    if (await this.customerService.checkLoginResponse(this.emailTextField, this.passwordTextField)) {
      console.log("Login successful");
 
-     const customer: CustomersModel | undefined = await this.customerService.getCustomerByEmail(this.emailTextField).toPromise();
+     const customer: UserModel | undefined = await this.customerService.getUserByEmail(this.emailTextField).toPromise();
 
       console.log("customer: ", customer);
 

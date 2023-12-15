@@ -29,10 +29,21 @@
   </ul>
 
   <div>
-    <button (click)="addToCart(coffee)">Add to basket</button>
+    <button (click)="addToCart(coffee)" (click)="openDialog(template)" >Add to basket</button>
 
+
+    <ng-template #template>
+      <h3>Vil du forsætte eller afslutte bestilling?</h3>
+
+      <div>
+        <button mat-raised-button (click)="closeDialog()" >Fortsæt med at handle </button>
+        <button mat-raised-button (click)="closeDialog()" routerLink="/Order">Gå til bestilling</button>
+      </div>
+
+    </ng-template>
 
   </div>
+
 
 
 

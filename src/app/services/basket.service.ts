@@ -14,27 +14,31 @@ export class BasketService {
   private basket: BasketItemModel[] = [];
 
 
+
   private totalPriceSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   totalPrice: Observable<number> = this.totalPriceSubject.asObservable();
 
 
   constructor(private cookiesService: CookiesService) {
-    this.loadBasketData();
+
   }
 
-  loadBasketData(): void {
-
-    const basket = this.cookiesService.getCookie('basket');
 
 
-    if (basket) {
+  loadBasketData() {
+    const basketCookie = this.cookiesService.getCookie("basketCookie");
 
-      this.basket = JSON.parse(basket);
+    if (basketCookie) {
+      this.basket = JSON.parse(basketCookie);
+      console.log("Basket cookie found:", this.basket)
+    } else {
+      console.log("No basket cookie found55")
     }
 
     this.updateTotalPrice();
   }
+
 
 
   updateTotalPrice() {
@@ -64,9 +68,11 @@ export class BasketService {
       this.basket.push({ item: currentItem, quantity: 1, subTotal: currentItem.price});
     }
 
-    this.cookiesService.setCookie('basket', JSON.stringify(this.basket));
+
+    this.cookiesService.setCookieForSevenDays('basketCookie', JSON.stringify(this.basket));
     this.updateTotalPrice()
     console.log('Updated basket:', this.basket);
+
 
   }
 
@@ -79,8 +85,11 @@ export class BasketService {
   }
 
   clearCart(): void {
+
     this.basket = [];
-    this.cookiesService.setCookie('basket', JSON.stringify(this.basket));
+    this.totalPriceSubject.next(0);
+    this.cookiesService.setCookieForSevenDays('basketCookie', JSON.stringify(this.basket))
+
   }
 
 
@@ -107,7 +116,7 @@ export class BasketService {
     }
 
 
-    this.cookiesService.setCookie('basket', JSON.stringify(this.basket));
+    this.cookiesService.setCookieForSevenDays('basketCookie', JSON.stringify(this.basket));
     console.log('Updated basket:', this.basket);
 
   }

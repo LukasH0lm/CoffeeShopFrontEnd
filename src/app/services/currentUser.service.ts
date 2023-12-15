@@ -1,6 +1,6 @@
 
 import {Injectable} from '@angular/core';
-import {CustomersModel} from "../models/Customers.model";
+import {UserModel} from "../models/User.model";
 import {CookiesService} from "./cookies.service";
 import {BehaviorSubject, Observable} from "rxjs";
 
@@ -12,7 +12,7 @@ export class CurrentUserService {
 
 
 
-  currentUser: CustomersModel | undefined;
+  currentUser: UserModel | undefined;
 
 
 
@@ -46,7 +46,7 @@ export class CurrentUserService {
      this.isLoggedInSubject.next(this.currentUser !== undefined);
    }
 
-    setCurrentUser(user: CustomersModel | undefined): void {
+    setCurrentUser(user: UserModel | undefined): void {
     this.currentUser = user;
     this.cookiesService.setCookie("currentUser", JSON.stringify(user));
     }
@@ -55,7 +55,6 @@ export class CurrentUserService {
     return this.currentUser;
 
     }
-
 
 
 

@@ -8,25 +8,19 @@ import {HttpClient} from "@angular/common/http";
 })
 export class OrdersService {
 
-  private baseUrl = "http://localhost:5196/api/Orders";
+  private baseUrl = "http://localhost:5196/api/orders";
   constructor(private http: HttpClient) { }
 
 
-
-  // Midlertidig data indtil api virker :)
-  private orders: OrdersModel[] = [
-
-  ];
-
-
-
-  getOrders(): OrdersModel[] {
-    return this.orders;
+  postOrder(order: OrdersModel) {
+    return this.http.post(this.baseUrl , order);
   }
 
-  getOrdersById(id: number) {
-    return this.orders.find((orders) => orders.OrderId === id);
-  }
+
+
+
+
+
 
 
 }

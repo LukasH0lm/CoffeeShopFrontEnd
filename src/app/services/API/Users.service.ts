@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CustomersModel} from "../../models/Customers.model";
+import {UserModel} from "../../models/User.model";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -7,19 +7,19 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root',
 })
-export class CustomersService {
+export class UsersService {
 
   private baseUrl = "http://localhost:5196/api";
   constructor(private http: HttpClient) { }
 
 
 
-  createLogin(customer: CustomersModel | undefined) {
-    return this.http.post(this.baseUrl + "/customers/add", customer);
+  createLogin(customer: UserModel | undefined) {
+    return this.http.post(this.baseUrl + "/users/add", customer);
   }
 
-  getCustomerByEmail(email: string) : Observable<CustomersModel> {
-    return this.http.get<CustomersModel>(this.baseUrl + "/customers/email/" + email)
+  getUserByEmail(email: string) : Observable<UserModel> {
+    return this.http.get<UserModel>(this.baseUrl + "/users/email/" + email)
   }
 
   async checkLoginResponse(email: string, password: string): Promise<boolean> {
@@ -27,7 +27,7 @@ export class CustomersService {
     const credentials = {email, password};
 
 
-    const response = await fetch("http://localhost:5196/api/customers/verify-password", {
+    const response = await fetch("http://localhost:5196/api/users/verify-password", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

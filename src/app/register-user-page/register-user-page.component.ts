@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
-import {CustomersService} from "../services/API/Customers.service";
+import {UsersService} from "../services/API/Users.service";
 import {Router} from "@angular/router";
 import {FormsModule} from "@angular/forms";
-import {CustomersModel} from "../models/Customers.model";
+import {UserModel} from "../models/User.model";
 
 @Component({
   selector: 'app-register-user-page',
@@ -15,7 +15,8 @@ import {CustomersModel} from "../models/Customers.model";
 })
 export class RegisterUserPageComponent {
 
-  user: CustomersModel = {
+  user: UserModel = {
+    userId: "",
     email: "",
     password: "",
     firstName: "",
@@ -25,7 +26,7 @@ export class RegisterUserPageComponent {
 
   };
 
-  constructor(private customersService: CustomersService, private router: Router) {
+  constructor(private customersService: UsersService, private router: Router) {
 
   }
 

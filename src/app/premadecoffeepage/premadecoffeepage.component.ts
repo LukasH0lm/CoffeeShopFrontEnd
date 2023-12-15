@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, TemplateRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 import {CurrentCoffeeService} from "../services/currentcoffee.service";
 import {BasketService} from "../services/basket.service";
@@ -9,23 +9,26 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {CoffeeCupsModel} from "../models/CoffeeCups.model";
 import {Observable } from "rxjs";
-import {CoffeeCupIngredientsService} from "../services/API/CoffeeCupIngredients.service";
+
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+
 
 
 @Component({
   selector: 'app-premadecoffeepage',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatCheckboxModule, FormsModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatCheckboxModule, FormsModule, RouterLink],
   templateUrl: './premadecoffeepage.component.html',
   styleUrl: './premadecoffeepage.component.css'
+
 })
 export class PremadecoffeepageComponent {
 
   coffeeCup: Observable<CoffeeCupsModel | undefined> | undefined;
+  dialogRef: MatDialogRef<any> | undefined;
 
 
-
-  constructor(private currentCoffeeService: CurrentCoffeeService, private coffeeCupIngredientsService: CoffeeCupIngredientsService, private basketService: BasketService, private route: ActivatedRoute) {
+  constructor(private currentCoffeeService: CurrentCoffeeService, private dialog: MatDialog, private basketService: BasketService, private route: ActivatedRoute) {
 
     const routingCoffeeName = this.route.snapshot.params['coffeeName'];
 
@@ -36,11 +39,22 @@ export class PremadecoffeepageComponent {
     this.coffeeCup = this.currentCoffeeService.getCurrentCoffee();
 
 
-
-
   }
 
 
+
+  openDialog(templateRef: TemplateRef<any>): void {
+    this.dialogRef = this.dialog.open(templateRef, {
+      width: '400px',
+      height: '105px'
+    });
+  }
+
+  closeDialog(): void {
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    }
+  }
 
   addToCart(cup?: CoffeeCupsModel): void {
     if (cup) {
@@ -48,6 +62,7 @@ export class PremadecoffeepageComponent {
     } else {
       console.error('Trying to add undefined cup to the cart.' + cup);
     }
+
   }
 
 

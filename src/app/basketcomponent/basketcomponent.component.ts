@@ -5,12 +5,14 @@ import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {BasketItemModel} from "../models/basketItem.model";
+import {RouterLink} from "@angular/router";
+import {CookiesService} from "../services/cookies.service";
 
 
 @Component({
   selector: 'app-basketcomponent',
   standalone: true,
-    imports: [CommonModule, MatDialogContent, MatDialogActions, MatDialogClose, MatDialogTitle, MatButtonModule, MatIconModule],
+    imports: [CommonModule, MatDialogContent, MatDialogActions, MatDialogClose, MatDialogTitle, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './basketcomponent.component.html',
   styleUrl: './basketcomponent.component.css'
 })
@@ -21,14 +23,14 @@ export class BasketcomponentComponent implements OnInit{
 
   items = this.basketService.getItems();
 
+
+
   totalPriceBasket = 0;
 
 
   clearCart(): void {
     this.basketService.clearCart();
     this.items = this.basketService.getItems();
-    this.basketService.updateTotalPrice();
-
   }
 
   removeItem(item: BasketItemModel): void {
@@ -44,6 +46,9 @@ export class BasketcomponentComponent implements OnInit{
       .subscribe((totalPrice: number) => {
         this.totalPriceBasket = totalPrice;
       });
+
+
+
 
 
     // Der nogle bugs med basket

@@ -1,1 +1,28 @@
-<p>orderpage</p>
+<body>
+<mat-grid-list cols="3" rowHeight="300px">
+  <mat-grid-tile *ngFor="let items of orderItems">
+
+    <div class="ItemBox">
+      <div>
+        Kaffe-navn: {{ items.item.name }}
+      </div>
+      <div>
+        Pris: {{ items.item.price*items.quantity}},-
+      </div>
+      <div>
+        Antal: {{ items.quantity }}x
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+  <div class="TotalBox">
+   Total: ,-
+  </div>
+
+
+<button mat-raised-button color="primary" (click)="completeOrder()" >Bestil</button>
+
+
+
+</body>

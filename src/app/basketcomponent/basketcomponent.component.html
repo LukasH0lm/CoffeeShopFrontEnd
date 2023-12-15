@@ -1,6 +1,6 @@
 
 
-<h2 mat-dialog-title>Basket</h2>
+<h2 mat-dialog-title>Kurv</h2>
 <mat-dialog-content
   *ngFor="let item of items">
   <h3>
@@ -11,6 +11,7 @@
     <button class="deleteButton" mat-icon-button (click)="removeItem(item)">
       <mat-icon class="deleteIcon">delete</mat-icon>
     </button>
+
 
 
   </h3>
@@ -25,6 +26,5 @@
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
   <button mat-button (click)="clearCart()">Clear</button>
-
-  <button mat-button mat-dialog-close>Order</button>
+  <button mat-button mat-dialog-close routerLink="/Order">Order</button>
 </mat-dialog-actions>

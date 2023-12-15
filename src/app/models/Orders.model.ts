@@ -1,11 +1,9 @@
+import {OrderDetailsModel} from "./OrderDetails.model";
+
 export interface OrdersModel {
-
-  CustomerId: number;
-  OrderDate: Date;
-  TotalAmount: number;
-  IsAccepted: boolean;
-  StoreId: number;
-  OrderId: number;
-
+  storeId: string;
+  userId: string;
+  totalAmount: number;
+  orderDetails: OrderDetailsModel[];
 
 }

@@ -1,8 +1,8 @@
 
 export interface OrderDetailsModel {
-  OrderId: number;
-  ItemId: number;
-  Quantity: number;
-  Subtotal: number;
-  OrderDetailId: number;
+
+  itemId: string;
+  quantity: number;
+  subTotal: number;
+
 }
