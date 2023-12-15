@@ -1,15 +1,10 @@
 footer {
   position: fixed;
-  bottom: 0;
+  bottom: 0px;
   width: 100%;
   height: 200px;
   background-color: #8d676a;
-
 }
-
-
-
-
 .footerClass{
   background-color: #8d676a;
 }
@@ -34,7 +29,6 @@ margin-left: 100px;
   color: black;
   text-decoration: none;
   color: #c6ae9d;
-
 }
 .contactClass{
   margin-left: 1100px;
@@ -51,7 +45,6 @@ margin-left: 100px;
 #quickLinksId{
   font-size: larger;
 }
-
 #contactHeaderId{
   font-size: larger;
 }
