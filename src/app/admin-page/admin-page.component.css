@@ -1,0 +1,15 @@
+.adminpage{
+
+}
+.adminpage h2{
+  position: relative;
+  text-align: center;
+  padding-top: 50px;
+}
+.adminpage table, th{
+  border: 1px solid black;
+}
+.adminpage table{
+  margin: auto;
+  width: 50%;
+}
