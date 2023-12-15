@@ -1,7 +1,11 @@
 
 export interface PostsModel {
-  Text: string;
-  CustomerId: number;
-  ItemId: number;
-  PostId: number;
+  postId: string;
+  createdAt: Date;
+  title: string;
+  text: string;
+  itemId: string;
+  //item: ItemsM;
+  customerId: string;
+  //user: User;
 }
