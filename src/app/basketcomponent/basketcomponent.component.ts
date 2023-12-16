@@ -6,7 +6,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {BasketItemModel} from "../models/basketItem.model";
 import {RouterLink} from "@angular/router";
-import {CookiesService} from "../services/cookies.service";
+
 
 
 @Component({
@@ -46,14 +46,6 @@ export class BasketcomponentComponent implements OnInit{
       .subscribe((totalPrice: number) => {
         this.totalPriceBasket = totalPrice;
       });
-
-
-
-
-
-    // Der nogle bugs med basket
-    // Evt subscribe til items her istedet for at gøre det manuelt i denne component
-    // Tror det kan give nogle problemer
 
 
   }

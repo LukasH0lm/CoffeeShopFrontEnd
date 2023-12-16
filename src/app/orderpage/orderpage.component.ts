@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {BasketService} from "../services/basket.service";
 import {BasketItemModel} from "../models/basketItem.model";
@@ -9,7 +9,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {OrdersService} from "../services/API/Orders.service";
 import {OrdersModel} from "../models/Orders.model";
 import {CurrentUserService} from "../services/currentUser.service";
-import {CookiesService} from "../services/cookies.service";
+import {CurrentStoreService} from "../services/currentStore.service";
 
 @Component({
   selector: 'app-orderpage',
@@ -26,9 +26,15 @@ export class OrderpageComponent implements OnInit{
     userId: "",
     totalAmount: 0,
     orderDetails: []
-  };
 
-  constructor(private route: ActivatedRoute, private basketService: BasketService, private ordersService: OrdersService, private currentUser: CurrentUserService, private cookiesService : CookiesService) {
+  };
+  uiTotalPrice: number = 0;
+
+  constructor(private route: ActivatedRoute, private basketService: BasketService, private ordersService: OrdersService,
+              private currentUser: CurrentUserService, private currentStoreService: CurrentStoreService,
+              private router: Router)
+  {
+
     this.companyName = this.route.snapshot.params['companyName'];
     this.orderItems = this.basketService.getItems();
   }
@@ -38,8 +44,9 @@ export class OrderpageComponent implements OnInit{
 
   completeOrder() {
 
-    this.completedOrder.storeId = "f1fa1b7f-1d30-4736-a91e-d736b40df6e1";
-    console.log("storeid", this.completedOrder.storeId)
+
+   if (this.currentUser.getCurrentUser() !== undefined) {
+    this.completedOrder.storeId = <string>this.currentStoreService.getCurrentStore()?.storeId;
     this.completedOrder.userId = <string>this.currentUser.getCurrentUser()?.userId;
     this.completedOrder.totalAmount = this.basketService.getTotal();
     this.completedOrder.orderDetails = this.orderItems.map((item: BasketItemModel) => {
@@ -60,7 +67,17 @@ export class OrderpageComponent implements OnInit{
       .subscribe((response) => {
     console.log("response: ", response)
 
+
+         this.router.navigate(['Home']);
+
   });
+   } else {
+     console.log("You need to log in to complete an order!")
+     this.router.navigate(['Logind']);
+
+
+
+   }
 
 
 
@@ -70,6 +87,13 @@ export class OrderpageComponent implements OnInit{
   ngOnInit(): void {
     this.orderItems = this.basketService.getItems();
     console.log("orderItems: ", this.orderItems)
+
+    this.basketService.totalPrice
+      .subscribe((totalPrice: number) => {
+        this.uiTotalPrice = totalPrice;
+      });
+
+
   }
 }
 

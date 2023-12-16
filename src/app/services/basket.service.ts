@@ -6,6 +6,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 
 
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -89,6 +90,8 @@ export class BasketService {
     this.basket = [];
     this.totalPriceSubject.next(0);
     this.cookiesService.setCookieForSevenDays('basketCookie', JSON.stringify(this.basket))
+
+
 
   }
 

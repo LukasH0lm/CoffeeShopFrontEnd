@@ -5,6 +5,7 @@ import {HeadercomponentComponent} from "./headercomponent/headercomponent.compon
 import {FootercomponentComponent} from "./footercomponent/footercomponent.component";
 import {MatMenuModule} from "@angular/material/menu";
 import {BasketService} from "./services/basket.service";
+import {CurrentStoreService} from "./services/currentStore.service";
 
 
 @Component({
@@ -17,9 +18,11 @@ import {BasketService} from "./services/basket.service";
 export class AppComponent implements OnInit{
   title = 'CoffeeShopFrontEnd';
 
-  constructor(private basketService: BasketService) {}
+  constructor(private basketService: BasketService, private currentStoreService : CurrentStoreService) {}
   ngOnInit(): void {
     this.basketService.loadBasketData();
+    this.currentStoreService.loadStoreFromCookies();
+
   }
 
 

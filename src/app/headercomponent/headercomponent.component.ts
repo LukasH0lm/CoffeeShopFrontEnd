@@ -9,7 +9,7 @@ import {CurrentUserService} from "../services/currentUser.service";
 import {MatMenuModule, MatMenuTrigger} from "@angular/material/menu";
 import { ViewChild } from '@angular/core';
 import {CookiesService} from "../services/cookies.service";
-import {BasketService} from "../services/basket.service";
+import {CurrentStoreService} from "../services/currentStore.service";
 
 @Component({
   selector: 'app-headercomponent',
@@ -26,7 +26,7 @@ export class HeadercomponentComponent implements OnInit{
   userName: string = "";
 
 
-  constructor(private popupBasketService : BasketPopupService, private currentUserService : CurrentUserService, private cookiesService : CookiesService, private router : Router, private basketService : BasketService) {
+  constructor(private popupBasketService : BasketPopupService, private currentUserService : CurrentUserService, private cookiesService : CookiesService, private router : Router, private currentStoreService : CurrentStoreService) {
 
 
     this.currentUserService.updateLoginStatus();
@@ -68,6 +68,11 @@ export class HeadercomponentComponent implements OnInit{
       // Do nothing for now
     }
 
+  }
+
+  test() : void {
+    console.log(this.currentStoreService.getCurrentStore());
+    this.cookiesService.debugGetAllCookies()
   }
 
   ngOnInit(): void {

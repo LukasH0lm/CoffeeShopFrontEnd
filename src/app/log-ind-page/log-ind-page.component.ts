@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
-import {Router, RouterLink} from "@angular/router";
+import {RouterLink} from "@angular/router";
 import {UsersService} from "../services/API/Users.service";
 import {UserModel} from "../models/User.model";
 import {FormsModule} from "@angular/forms";
@@ -9,6 +9,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {CurrentUserService} from "../services/currentUser.service";
 import {CookiesService} from "../services/cookies.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class LogIndPageComponent {
 
 
  constructor(private customerService: UsersService, private currentUserService: CurrentUserService,
-             private cookiesService: CookiesService, private snackBar: MatSnackBar, private router: Router) {
+             private cookiesService: CookiesService, private snackBar: MatSnackBar, private location: Location) {
 
 
  }
@@ -72,8 +73,8 @@ export class LogIndPageComponent {
 
 
 
-     // Navigate to home page.
-       await this.router.navigate(['Home']);
+     // Navigate to previous page.
+     this.location.back();
 
      this.openSnackBarSuccess();
 

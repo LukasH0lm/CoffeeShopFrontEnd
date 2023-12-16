@@ -15,7 +15,9 @@ export class CookiesService {
     this.cookieService.set(name, value, 7, '/' );
   }
 
-
+  debugGetAllCookies(): void {
+    console.log("All cookies: ", this.cookieService.getAll());
+  }
 
   setCookie(name: string, value: string): void {
     this.cookieService.set(name, value);
@@ -27,7 +29,7 @@ export class CookiesService {
   }
 
   deleteCookie(name: string): void {
-    this.cookieService.delete(name);
+    this.cookieService.delete(name, '/');
   }
 
 

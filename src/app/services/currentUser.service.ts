@@ -26,6 +26,11 @@ export class CurrentUserService {
 
   constructor(private cookiesService: CookiesService) {
     this.loadUserFromCookies();
+
+
+
+
+
   }
 
    loadUserFromCookies() {
@@ -33,8 +38,10 @@ export class CurrentUserService {
     const currentUserCookie = this.cookiesService.getCookie("currentUser");
     console.log("currentUserCookie: ", currentUserCookie)
     if (currentUserCookieSaved) {
+      console.log("currentUserCookieSaved: ", currentUserCookieSaved)
       this.currentUser = JSON.parse(currentUserCookieSaved);
     } else  if (currentUserCookie){
+      console.log("currentUserCookie: ", currentUserCookie)
       this.currentUser = JSON.parse(currentUserCookie)
     }
    }
