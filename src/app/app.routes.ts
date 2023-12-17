@@ -9,6 +9,7 @@ import {PremadecoffeepageComponent} from "./premadecoffeepage/premadecoffeepage.
 import {LogIndPageComponent} from "./log-ind-page/log-ind-page.component";
 import {RegisterUserPageComponent} from "./register-user-page/register-user-page.component";
 import {AdminPageComponent} from "./admin-page/admin-page.component";
+import {OrderManagementComponent} from "./order-management/order-management.component";
 
 
 
@@ -26,5 +27,8 @@ export const routes: Routes = [
     { path: 'Logind', component: LogIndPageComponent },
     { path: 'RegisterBruger', component: RegisterUserPageComponent },
     { path: 'AdminPageComponent', component: AdminPageComponent },
+  { path: 'admin', component: OrderManagementComponent },
 
 ];
+
+

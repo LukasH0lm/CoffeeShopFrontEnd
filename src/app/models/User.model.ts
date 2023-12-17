@@ -7,5 +7,6 @@ export interface UserModel {
   phone: string;
   address: string;
   password: string;
+  isAdmin: boolean;
 
 }

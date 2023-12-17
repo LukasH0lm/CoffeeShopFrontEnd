@@ -12,6 +12,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import { Location } from '@angular/common';
 
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-log-ind-page',
   standalone: true,
@@ -29,7 +31,7 @@ export class LogIndPageComponent {
 
 
  constructor(private customerService: UsersService, private currentUserService: CurrentUserService,
-             private cookiesService: CookiesService, private snackBar: MatSnackBar, private location: Location) {
+             private cookiesService: CookiesService, private snackBar: MatSnackBar, private location: Location, private router: Router) {
 
 
  }
@@ -74,8 +76,18 @@ export class LogIndPageComponent {
 
 
 
+     console.log(this.currentUserService.getCurrentUser()?.isAdmin);
+
+
+     if (this.currentUserService.getCurrentUser()?.isAdmin) {
+       await this.router.navigate(['/admin']);
+     }else{
+       this.location.back(); // ret broke at den returnere en til create customer, burde den ikke gå til main page?
+
+     }
+
      // Navigate to previous page.
-     this.location.back();
+
 
      this.openSnackBarSuccess();
 

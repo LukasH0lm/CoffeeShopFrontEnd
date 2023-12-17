@@ -29,6 +29,7 @@ export class OrderpageComponent implements OnInit{
   companyName: string;
   orderItems: BasketItemModel | any;
   completedOrder: OrdersModel = {
+    orderId: "", // håber ikke det her ødelægger noget
     storeId: "",
     userId: "",
     totalAmount: 0,
