@@ -1,5 +1,5 @@
 <body>
-<mat-grid-list cols="3" rowHeight="300px">
+<mat-grid-list cols="1" rowHeight="100px">
   <mat-grid-tile *ngFor="let items of orderItems">
 
     <div class="ItemBox">
@@ -15,6 +15,8 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+
+
 
   <div class="TotalBox">
    Total: {{ uiTotalPrice }} ,-

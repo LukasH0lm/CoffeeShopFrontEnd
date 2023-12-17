@@ -10,6 +10,13 @@ import {OrdersService} from "../services/API/Orders.service";
 import {OrdersModel} from "../models/Orders.model";
 import {CurrentUserService} from "../services/currentUser.service";
 import {CurrentStoreService} from "../services/currentStore.service";
+import {interval, switchMap, takeWhile} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
+
+
+
+
+
 
 @Component({
   selector: 'app-orderpage',
@@ -30,14 +37,21 @@ export class OrderpageComponent implements OnInit{
   };
   uiTotalPrice: number = 0;
 
+
+
   constructor(private route: ActivatedRoute, private basketService: BasketService, private ordersService: OrdersService,
               private currentUser: CurrentUserService, private currentStoreService: CurrentStoreService,
-              private router: Router)
+              private router: Router, private snackBar: MatSnackBar)
   {
+
+
+
 
     this.companyName = this.route.snapshot.params['companyName'];
     this.orderItems = this.basketService.getItems();
   }
+
+
 
 
 
@@ -61,16 +75,14 @@ export class OrderpageComponent implements OnInit{
     this.basketService.clearCart();
 
 
+     this.ordersService.postOrder(this.completedOrder)
+       .subscribe((response : any) => {
+         console.log("response: ", response);
 
-
-    this.ordersService.postOrder(this.completedOrder)
-      .subscribe((response) => {
-    console.log("response: ", response)
-
+         this.checkOrderStatus(response.orderId);
 
          this.router.navigate(['Home']);
-
-  });
+       });
    } else {
      console.log("You need to log in to complete an order!")
      this.router.navigate(['Logind']);
@@ -83,6 +95,42 @@ export class OrderpageComponent implements OnInit{
 
 
   }
+
+
+  orderStatusSnackBar(message : string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 0, // Hvis den er 0 bliver den åben indtil brugeren lukker den
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+
+    });
+  }
+
+  checkOrderStatus(orderId : string) {
+
+    interval(5000)
+      .pipe(
+        switchMap(() => this.ordersService.checkOrder(orderId)),
+        takeWhile((isAccepted: boolean) => !isAccepted, true) // Continue until isAccepted is true
+      )
+      .subscribe(
+        (isAccepted: boolean) => {
+          if (isAccepted) {
+            this.orderStatusSnackBar("Din ordre er blevet accepteret, og kan afhentes til det valgte tidspunkt");
+          } else {
+            this.orderStatusSnackBar("Din ordre afventer bekræftelse...");
+          }
+        },
+        (error) => {
+          if (error.status === 404) {
+            this.orderStatusSnackBar("Din ordre kunne ikke laves til det ønskede tidspunkt. Bestil til et senere tidspunkt");
+          } else {
+            this.orderStatusSnackBar("Error checking order status " + error);
+          }
+        }
+      );
+  }
+
 
   ngOnInit(): void {
     this.orderItems = this.basketService.getItems();

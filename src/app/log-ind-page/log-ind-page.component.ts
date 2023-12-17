@@ -38,6 +38,7 @@ export class LogIndPageComponent {
   openSnackBarSuccess() {
     this.snackBar.open('Successfully logged in', 'Close', {
       duration: 5000,
+
     });
   }
 

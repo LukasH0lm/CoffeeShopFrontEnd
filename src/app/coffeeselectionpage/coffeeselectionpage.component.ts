@@ -8,6 +8,7 @@ import {CoffeeCupsService} from "../services/API/CoffeeCups.service";
 import {forkJoin} from "rxjs";
 import {StoresService} from "../services/API/Stores.service";
 import {StoresModel} from "../models/Stores.model";
+import {CurrentStoreService} from "../services/currentStore.service";
 
 
 @Component({
@@ -23,9 +24,10 @@ export class CoffeeselectionpageComponent implements OnInit{
   CoffeeCupsByStore: CoffeeCupsModel | any;
   stores : StoresModel[] = [];
   companyName: string;
-  currentStoreId: string | undefined;
 
-  constructor(private currentCoffeeService: CurrentCoffeeService, private coffeeCupsService: CoffeeCupsService, private storesService : StoresService, private route: ActivatedRoute, private router: Router) {
+
+
+  constructor(private currentCoffeeService: CurrentCoffeeService, private coffeeCupsService: CoffeeCupsService, private storesService : StoresService, private currentStoreService : CurrentStoreService, private route: ActivatedRoute, private router: Router) {
 
     this.companyName = this.route.snapshot.params['companyName'];
 
@@ -38,17 +40,20 @@ export class CoffeeselectionpageComponent implements OnInit{
 
   ngOnInit() {
 
-    //Vi bruger forkjoin for at vi kan sikre os at stores er opdateret før vi kører getCurrentStoreId.
+    //Vi bruger forkjoin for at vi kan sikre os at coffees er opdateret før vi kører getCoffeeShopsForEachStore.
     forkJoin({
       coffees: this.coffeeCupsService.getCoffeeCups(),
       stores: this.storesService.getStores(),
+
     }).subscribe(
       ({ coffees, stores }) => {
         this.coffeesCups = coffees;
-        console.log("coffeesCups: ", this.coffeesCups)
         this.stores = stores;
 
-        this.getCurrentStoreId();
+
+       this.getCoffeeShopsForEachStore();
+
+
       },
       error => {
         console.error('Error CoffeeSelectionPage - NgOnInit:', error);
@@ -56,23 +61,20 @@ export class CoffeeselectionpageComponent implements OnInit{
     );
   }
 
-  getCurrentStoreId() {
-    this.currentStoreId = this.storesService.getStoreIdByName(this.stores, this.companyName);
-    console.log("getCurrentStoreId: ", this.currentStoreId)
-    //vi har opdatere premadecoffeecupsbystore her, da vi skal sikre os at vi har opdateret currentStoreId før vi kalder getPremadeCoffeeCupsByStore.
-    if (this.currentStoreId !== undefined) {
-    this.coffeeCupsService.getCoffeeCupsByStore(this.currentStoreId).subscribe(
+
+
+  getCoffeeShopsForEachStore() {
+
+    this.coffeeCupsService.getCoffeeCupsByStore(this.currentStoreService.currentStore?.storeId).subscribe(
       CoffeeCupsByStore => {
         this.CoffeeCupsByStore = CoffeeCupsByStore;
         console.log("CoffeeCupsByStore: ", CoffeeCupsByStore)
       },
       error => {
-        console.error('Error getCurrentStoreId:', error);
+        console.error('Error GetCoffeeCupsByStore:', error);
       }
     );
-    } else {
-      console.error('Error getCurrentStoreId: Current store ID is undefined.');
-    }
+
   }
 
 
