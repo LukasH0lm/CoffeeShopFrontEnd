@@ -70,6 +70,7 @@ export class HeadercomponentComponent implements OnInit{
 
   }
 
+  // bro created a method called test and pushed it to master 💀
   test() : void {
     console.log(this.currentStoreService.getCurrentStore());
     this.cookiesService.debugGetAllCookies()

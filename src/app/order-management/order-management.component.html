@@ -1,0 +1,16 @@
+<div *ngIf="pendingOrders.length > 0; else noOrders">
+  <div *ngFor="let order of pendingOrders">
+    <div class="order">
+      <h3>Order #{{ order.orderId }}</h3>
+      <p>Customer: {{ order.userId }}</p>
+      <p>Total Amount: {{ order.totalAmount | currency }}</p>
+      <button (click)="acceptOrder(order.orderId)">Accept</button>
+      <button (click)="declineOrder(order.orderId)">Decline</button>
+      <button (click)="deleteOrder(order.orderId)">Delete</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noOrders>
+  <p>No pending orders.</p>
+</ng-template>

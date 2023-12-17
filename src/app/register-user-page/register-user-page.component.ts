@@ -15,15 +15,24 @@ import {UserModel} from "../models/User.model";
 })
 export class RegisterUserPageComponent {
 
-  user: UserModel = {
-    userId: "",
-    email: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    phone: "",
-    address: ""
-
+  public user: {
+    firstName: string;
+    lastName: string;
+    password: string;
+    address: string;
+    phone: string;
+    userId: string;
+    email: string
+    isAdmin: boolean;
+  }= {
+    firstName: '',
+    lastName: '',
+    password: '',
+    address: '',
+    phone: '',
+    userId: '',
+    email: '',
+    isAdmin: false,
   };
 
   constructor(private customersService: UsersService, private router: Router) {
