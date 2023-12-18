@@ -5,9 +5,13 @@
 <div class="headerLinksClass">
   <nav>
       <a routerLink="/Home">Home</a>
-      <a routerLink="/Select">Order</a>
-      <a routerLink="/AdminPageComponent">Social-Medie</a>
-      <a (click)="test()">Testknap</a>
+      <a routerLink="/Business">Order</a>
+      <a routerLink="/Social">Social-Medie</a>
+
+
+    <a *ngIf="isLoggedIn && isAdmin" routerLink="/admin">Admin</a>
+
+
   </nav>
 </div>
 

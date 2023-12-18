@@ -17,11 +17,14 @@ export class CurrentUserService {
 
 
    //https://www.learnrxjs.io/learn-rxjs/subjects/behaviorsubject
+
   private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isAdminSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private currentUserNameSubject: BehaviorSubject<string> = new BehaviorSubject<string>("");
 
   isLoggedIn: Observable<boolean> = this.isLoggedInSubject.asObservable();
   currentUserName: Observable<string> = this.currentUserNameSubject.asObservable();
+  isAdmin: Observable<boolean> = this.isAdminSubject.asObservable();
 
 
   constructor(private cookiesService: CookiesService) {
@@ -45,6 +48,10 @@ export class CurrentUserService {
       this.currentUser = JSON.parse(currentUserCookie)
     }
    }
+
+  updateAdminStatus() {
+    this.isAdminSubject.next(this.currentUser?.isAdmin ?? false);
+  }
 
    updateCurrentUserName() {
       this.currentUserNameSubject.next(this.currentUser?.firstName ?? "");

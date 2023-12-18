@@ -8,8 +8,8 @@ import {CoffeeselectionpageComponent} from "./coffeeselectionpage/coffeeselectio
 import {PremadecoffeepageComponent} from "./premadecoffeepage/premadecoffeepage.component";
 import {LogIndPageComponent} from "./log-ind-page/log-ind-page.component";
 import {RegisterUserPageComponent} from "./register-user-page/register-user-page.component";
-import {AdminPageComponent} from "./admin-page/admin-page.component";
 import {OrderManagementComponent} from "./order-management/order-management.component";
+import {SocialmediapageComponent} from "./socialmediapage/socialmediapage.component";
 
 
 
@@ -26,7 +26,7 @@ export const routes: Routes = [
     { path: 'Order', component: OrderpageComponent },
     { path: 'Logind', component: LogIndPageComponent },
     { path: 'RegisterBruger', component: RegisterUserPageComponent },
-    { path: 'AdminPageComponent', component: AdminPageComponent },
+    { path: 'Social', component: SocialmediapageComponent },
   { path: 'admin', component: OrderManagementComponent },
 
 ];

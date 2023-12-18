@@ -93,6 +93,7 @@ export class LogIndPageComponent {
 
      this.currentUserService.updateLoginStatus();
      this.currentUserService.updateCurrentUserName();
+      this.currentUserService.updateAdminStatus();
 
 
 

@@ -24,6 +24,7 @@ export class HeadercomponentComponent implements OnInit{
 
   isLoggedIn: boolean = false;
   userName: string = "";
+  isAdmin: boolean = false;
 
 
   constructor(private popupBasketService : BasketPopupService, private currentUserService : CurrentUserService, private cookiesService : CookiesService, private router : Router, private currentStoreService : CurrentStoreService) {
@@ -31,6 +32,9 @@ export class HeadercomponentComponent implements OnInit{
 
     this.currentUserService.updateLoginStatus();
     this.currentUserService.updateCurrentUserName();
+    this.currentUserService.updateAdminStatus();
+
+    console.log(this.isAdmin)
 
   }
 
@@ -70,11 +74,7 @@ export class HeadercomponentComponent implements OnInit{
 
   }
 
-  // bro created a method called test and pushed it to master 💀
-  test() : void {
-    console.log(this.currentStoreService.getCurrentStore());
-    this.cookiesService.debugGetAllCookies()
-  }
+
 
   ngOnInit(): void {
 
@@ -87,6 +87,13 @@ export class HeadercomponentComponent implements OnInit{
       .subscribe((currentUserName: string) => {
         this.userName = currentUserName;
       });
+
+    this.currentUserService.isAdmin
+      .subscribe((isAdmin: boolean) => {
+        this.isAdmin = isAdmin;
+
+      });
+
   }
 
 
