@@ -11,6 +11,7 @@ import {OrderManagementComponent} from "./order-management/order-management.comp
 import {SocialmediapageComponent} from "./socialmediapage/socialmediapage.component";
 import {CustomCoffeeComponent} from "./custom-coffee/custom-coffee.component";
 import {SocialMediaComponent} from "./social-media/social-media.component";
+import {AdminGuard} from "./services/AdminGuard.service";
 
 
 
@@ -28,7 +29,7 @@ export const routes: Routes = [
     { path: 'Logind', component: LogIndPageComponent },
     { path: 'RegisterBruger', component: RegisterUserPageComponent },
     { path: 'Social', component: SocialmediapageComponent },
-  { path: 'admin', component: OrderManagementComponent },
+  { path: 'admin', component: OrderManagementComponent, canActivate: [AdminGuard]},
   {path: 'SocialMedia', component: SocialMediaComponent}
 
 ];

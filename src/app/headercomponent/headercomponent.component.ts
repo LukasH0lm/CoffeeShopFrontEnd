@@ -34,8 +34,6 @@ export class HeadercomponentComponent implements OnInit{
     this.currentUserService.updateCurrentUserName();
     this.currentUserService.updateAdminStatus();
 
-    console.log(this.isAdmin)
-
   }
 
 
@@ -59,6 +57,7 @@ export class HeadercomponentComponent implements OnInit{
 
     this.cookiesService.deleteCookie("huskMig");
     this.currentUserService.updateLoginStatus();
+    this.currentUserService.updateAdminStatus();
     this.currentUserService.updateCurrentUserName();
 
   }
