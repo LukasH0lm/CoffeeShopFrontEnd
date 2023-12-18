@@ -10,6 +10,7 @@ import {LogIndPageComponent} from "./log-ind-page/log-ind-page.component";
 import {RegisterUserPageComponent} from "./register-user-page/register-user-page.component";
 import {OrderManagementComponent} from "./order-management/order-management.component";
 import {SocialmediapageComponent} from "./socialmediapage/socialmediapage.component";
+import {CustomCoffeeComponent} from "./custom-coffee/custom-coffee.component";
 
 
 
@@ -28,6 +29,7 @@ export const routes: Routes = [
     { path: 'RegisterBruger', component: RegisterUserPageComponent },
     { path: 'Social', component: SocialmediapageComponent },
   { path: 'admin', component: OrderManagementComponent },
+  { path: 'CustomCoffee', component: CustomCoffeeComponent}
 
 ];
 

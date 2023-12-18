@@ -21,7 +21,17 @@ export class IngredientsService {
 
 
   getIngredients() {
+
+    console.log("getIngredients");
+    console.log(this.ingredients);
+
     return this.ingredients;
+
+
+  }
+
+  getIngredientArray(){
+    return this.ingredients.subscribe(ingredients => ingredients as IngredientsModel[]);
   }
 
 

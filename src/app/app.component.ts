@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet} from '@angular/router';
 import {HeadercomponentComponent} from "./headercomponent/headercomponent.component";
@@ -6,7 +6,6 @@ import {FootercomponentComponent} from "./footercomponent/footercomponent.compon
 import {MatMenuModule} from "@angular/material/menu";
 import {BasketService} from "./services/basket.service";
 import {CurrentStoreService} from "./services/currentStore.service";
-
 
 @Component({
   selector: 'app-root',
@@ -32,6 +31,24 @@ export class AppComponent implements OnInit{
 
 
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CustomCoffeeComponent} from "./custom-coffee/custom-coffee.component";
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
 
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    AppComponent,
+    ReactiveFormsModule,
+  ],
+  declarations: [
+    CustomCoffeeComponent,
+  ],
+})
+export class AppModule { }
 
 
