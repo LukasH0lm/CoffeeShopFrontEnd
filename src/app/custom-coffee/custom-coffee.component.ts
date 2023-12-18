@@ -22,6 +22,7 @@ export class CustomCoffeeComponent implements OnInit {
   ingredients: IngredientsModel[] = [];
   customCoffeeItems: any[] = [];
   CurrentUser: any;
+  totalPrice: number = 0;
 
   constructor(private fb: FormBuilder, private customCoffeeService: CustomCoffeeService, private ingredientService : IngredientsService, userService : CurrentUserService) {}
 
@@ -58,8 +59,20 @@ export class CustomCoffeeComponent implements OnInit {
     const ingredientName = ingredient?.name;
 
 
-    if (ingredient) {
-      this.customCoffeeItems.push({ ingredient, quantity, ingredientName });
+    if (ingredient && quantity > 0) {
+
+      const existingIndex = this.customCoffeeItems.findIndex((item) => item.ingredient.ingredientId === ingredient.ingredientId);
+
+      if (existingIndex !== -1) {
+        // If the ingredient already exists, update the quantity
+        this.customCoffeeItems[existingIndex].quantity += quantity;
+      } else {
+        // If the ingredient doesn't exist, add it to the list
+        this.customCoffeeItems.push({ ingredient, quantity, ingredientName });
+      }
+
+      this.calculateTotalPrice();
+
       this.customCoffeeForm.reset();
     }
   }
@@ -82,21 +95,19 @@ export class CustomCoffeeComponent implements OnInit {
 
 
     const customCoffee: CreateCustomCoffeeModel = {
-      // Other properties...
-      name: 'YourCustomCoffeeName',
-      price: 0, // Set the appropriate price
-      description: 'YourCustomCoffeeDescription',
+      name: 'DefaultName', //we should add a textbox for this
+      price: this.totalPrice, // Set the appropriate price
+      description: 'YourCustomCoffeeDescription', // also this
       image: 'YourImageURL',
       storeIds: ['29582967-4ed4-4c10-87c8-14ae2c533545'],
       UserId: customerId,
-      itemType: 0, // Set the appropriate item type
+      itemType: 2, // we should do this in the backend
       ingredients: this.customCoffeeItems.map(item => ({
         ingredientId: item.ingredient.id, // Assuming item.ingredient has the necessary properties
         quantity: item.quantity
       })),
     };
 
-    // Call your service to save the custom coffee cup
 
     this.customCoffeeService.saveCustomCoffees(customCoffee)
       .subscribe((response) => {
@@ -108,4 +119,12 @@ export class CustomCoffeeComponent implements OnInit {
         console.log('API Error Details:', error.error);
       });
   }
+
+  calculateTotalPrice(): void {
+    this.totalPrice = this.customCoffeeItems.reduce((total, item) => {
+      const ingredientPrice = item.ingredient.price || 0;
+      return total + ingredientPrice * item.quantity;
+    }, 0);
+  }
+
 }
