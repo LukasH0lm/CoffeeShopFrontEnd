@@ -14,13 +14,14 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CurrentStoreService} from "../services/currentStore.service";
 import {CakesModel} from "../models/Cakes.model";
 import {CoffeeCupsService} from "../services/API/CoffeeCups.service";
+import {MatRadioModule} from "@angular/material/radio";
 
 
 
 @Component({
   selector: 'app-premadecoffeepage',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatCheckboxModule, FormsModule, RouterLink],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatCheckboxModule, FormsModule, RouterLink, MatRadioModule],
   templateUrl: './premadecoffeepage.component.html',
   styleUrl: './premadecoffeepage.component.css'
 

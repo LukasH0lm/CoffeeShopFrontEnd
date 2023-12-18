@@ -20,11 +20,13 @@
 
     </li >
 
+  </ul>
 
-
-    <h2 *ngIf="isBaristaMaestro">Kager</h2>
+  <ul *ngIf="isBaristaMaestro">
+    <h2>Vælg hvilken kage der skal med til din kaffe</h2>
     <li *ngFor="let cake of cakes | async">
       {{ cake.name }}
+      <mat-radio-button value="{{cake}}"></mat-radio-button>
 
       <div>
         {{ cake.description }}
@@ -32,16 +34,8 @@
 
 
 
+
     </li>
-
-
-
-    <!--*ngIf="currentStoreService.getCurrentStore()."-->
-
-
-
-
-
 
   </ul>
 
