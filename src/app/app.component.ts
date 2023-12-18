@@ -35,9 +35,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CustomCoffeeComponent} from "./custom-coffee/custom-coffee.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
+import {SocialMediaComponent} from "./social-media/social-media.component";
 
 
 @NgModule({
+
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -45,10 +47,18 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     ReactiveFormsModule,
   ],
+
   declarations: [
+    SocialMediaComponent,
     CustomCoffeeComponent,
   ],
+
+
 })
+
+
+
+
 export class AppModule { }
 
 

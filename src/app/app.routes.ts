@@ -11,6 +11,7 @@ import {RegisterUserPageComponent} from "./register-user-page/register-user-page
 import {OrderManagementComponent} from "./order-management/order-management.component";
 import {SocialmediapageComponent} from "./socialmediapage/socialmediapage.component";
 import {CustomCoffeeComponent} from "./custom-coffee/custom-coffee.component";
+import {SocialMediaComponent} from "./social-media/social-media.component";
 
 
 
@@ -29,7 +30,8 @@ export const routes: Routes = [
     { path: 'RegisterBruger', component: RegisterUserPageComponent },
     { path: 'Social', component: SocialmediapageComponent },
   { path: 'admin', component: OrderManagementComponent },
-  { path: 'CustomCoffee', component: CustomCoffeeComponent}
+  { path: 'CustomCoffee', component: CustomCoffeeComponent},
+  {path: 'SocialMedia', component: SocialMediaComponent}
 
 ];
 

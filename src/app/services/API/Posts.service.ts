@@ -1,36 +1,22 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {PostsModel} from "../../models/Posts.model";
-
+import { Post } from '../../models/Post.model';
+import { CreatePost } from '../../models/CreatePost.model';
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  private apiUrl = 'api/posts'; // Replace with the actual API endpoint
+  private baseUrl = 'http://localhost:5196/api';
 
   constructor(private http: HttpClient) {}
 
-  getAllPosts(): Observable<PostsModel[]> {
-    return this.http.get<PostsModel[]>(this.apiUrl);
+  getPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}/posts`);
   }
 
-  getPostById(postId: string): Observable<PostsModel> {
-    const url = `${this.apiUrl}/${postId}`;
-    return this.http.get<PostsModel>(url);
-  }
-
-  addPost(post: PostsModel): Observable<string> {
-    return this.http.post<string>(this.apiUrl, post);
-  }
-
-  updatePost(post: PostsModel): Observable<void> {
-    const url = `${this.apiUrl}/${post.postId}`;
-    return this.http.put<void>(url, post);
-  }
-
-  deletePost(postId: string): Observable<void> {
-    const url = `${this.apiUrl}/${postId}`;
-    return this.http.delete<void>(url);
+  createPost(post: CreatePost): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/posts`, post);
   }
 }
