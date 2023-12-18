@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CreateCustomCoffeeModel} from "../models/CreateCustomCoffeeCup.model";
 import {CreateIngredientsModel} from "../models/CreateIngredients.model";
 import {CurrentUserService} from "../services/currentUser.service";
+import {CurrentStoreService} from "../services/currentStore.service";
 @Component({
   selector: 'app-custom-coffee',
   templateUrl: './custom-coffee.component.html',
@@ -24,11 +25,11 @@ export class CustomCoffeeComponent implements OnInit {
   CurrentUser: any;
   totalPrice: number = 0;
 
-  constructor(private fb: FormBuilder, private customCoffeeService: CustomCoffeeService, private ingredientService : IngredientsService, userService : CurrentUserService) {}
+  constructor(private fb: FormBuilder, private customCoffeeService: CustomCoffeeService, private ingredientService : IngredientsService, private userService : CurrentUserService, private currentStoreService : CurrentStoreService) {}
 
   ngOnInit(): void {
 
-    this.CurrentUser = localStorage.getItem('currentUser');
+    this.CurrentUser = this.userService.getCurrentUser()?.userId;
 
     // Fetch ingredients from the service
     this.ingredientService.getIngredients().subscribe(
@@ -84,13 +85,14 @@ export class CustomCoffeeComponent implements OnInit {
       return;
     }
 
+
     // SUUUUNNENEE HVORDAN FUCK VIRKER COOOOKIIEIEESS??? (╯°□°)╯︵ ┻━┻
 
 
 
-    //const customerId = this.CurrentUser.UserId;
 
-    const customerId = "bb1d83d7-4c3a-4ec4-2934-08dbfc92f062";
+
+    const customerId = this.CurrentUser;
 
 
 
@@ -99,7 +101,7 @@ export class CustomCoffeeComponent implements OnInit {
       price: this.totalPrice, // Set the appropriate price
       description: 'YourCustomCoffeeDescription', // also this
       image: 'YourImageURL',
-      storeIds: ['29582967-4ed4-4c10-87c8-14ae2c533545'],
+      storeIds: [this.currentStoreService.getCurrentStore()?.storeId ?? ""],
       UserId: customerId,
       itemType: 2, // we should do this in the backend
       ingredients: this.customCoffeeItems.map(item => ({
