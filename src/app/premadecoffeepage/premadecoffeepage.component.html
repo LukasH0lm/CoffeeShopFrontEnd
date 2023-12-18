@@ -11,13 +11,24 @@
   </div>
 
 
-  <h2>Ingredients</h2>
+  <h2>Ingredienser</h2>
   <ul>
-
-
 
     <li *ngFor="let ingredient of coffee.ingredients">
       {{ ingredient.name }}   <!--{{ ingredient.quantity }}{{MeasurementUnit[ingredient.measurementUnit]}}-->
+
+
+    </li >
+
+
+
+    <h2 *ngIf="isBaristaMaestro">Kager</h2>
+    <li *ngFor="let cake of cakes | async">
+      {{ cake.name }}
+
+      <div>
+        {{ cake.description }}
+      </div>
 
 
 
@@ -25,11 +36,17 @@
 
 
 
+    <!--*ngIf="currentStoreService.getCurrentStore()."-->
+
+
+
+
+
 
   </ul>
 
   <div>
-    <button (click)="addToCart(coffee)" (click)="openDialog(template)" >Add to basket</button>
+    <button (click)="addToCart(coffee)" (click)="openDialog(template)" >Tilføj til kurv</button>
 
 
     <ng-template #template>

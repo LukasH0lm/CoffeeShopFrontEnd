@@ -11,6 +11,9 @@ import {CoffeeCupsModel} from "../models/CoffeeCups.model";
 import {Observable } from "rxjs";
 
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {CurrentStoreService} from "../services/currentStore.service";
+import {CakesModel} from "../models/Cakes.model";
+import {CoffeeCupsService} from "../services/API/CoffeeCups.service";
 
 
 
@@ -26,9 +29,12 @@ export class PremadecoffeepageComponent {
 
   coffeeCup: Observable<CoffeeCupsModel | undefined> | undefined;
   dialogRef: MatDialogRef<any> | undefined;
+  cakes: Observable<CakesModel[]> | undefined;
+  isBaristaMaestro: boolean = false;
 
 
-  constructor(private currentCoffeeService: CurrentCoffeeService, private dialog: MatDialog, private basketService: BasketService, private route: ActivatedRoute) {
+
+  constructor(private currentCoffeeService: CurrentCoffeeService, private dialog: MatDialog, private basketService: BasketService, private route: ActivatedRoute, private coffeeCupsService : CoffeeCupsService, private currentStoreService : CurrentStoreService) {
 
     const routingCoffeeName = this.route.snapshot.params['coffeeName'];
 
@@ -38,8 +44,17 @@ export class PremadecoffeepageComponent {
 
     this.coffeeCup = this.currentCoffeeService.getCurrentCoffee();
 
+    this.currentCoffeeService.getCurrentCoffee()?.subscribe( coffeeCup => {
+     this.cakes = this.coffeeCupsService.getCakesByCoffeeCup(coffeeCup?.itemId);
+    })
+
+    this.isBaristaMaestro = this.currentStoreService.getCurrentStore()?.name === "BaristaMaestro";
+
+
+
 
   }
+
 
 
 

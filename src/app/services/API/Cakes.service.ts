@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {CakesModel} from "../../models/Cakes.model";
 import {HttpClient} from "@angular/common/http";
 
 
@@ -13,20 +12,6 @@ export class CakesService {
 
 
 
-  // Midlertidig data indtil api virker :)
-  private cakes: CakesModel[] = [
-
-  ];
-
-
-
-  getCakes(): CakesModel[] {
-    return this.cakes;
-  }
-
-  getCakeById(id: number) {
-    return this.cakes.find((cakes) => cakes.ItemId === id);
-  }
 
 
 }

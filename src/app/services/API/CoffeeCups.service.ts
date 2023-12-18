@@ -23,6 +23,15 @@ export class CoffeeCupsService {
   }
 
 
+  getCakesByCoffeeCup(CoffeeCupId: string | undefined) {
+
+
+
+    return this.http.get<CoffeeCupsModel[]>(this.baseUrl + "/CoffeeCup/" + CoffeeCupId + "/Cakes");
+
+
+  }
+
   getCoffeeCupsByStore(storeId: string | undefined): Observable<CoffeeCupsModel[]> {
     return this.getCoffeeCups().pipe(
       map(coffeeCups => {

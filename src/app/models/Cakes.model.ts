@@ -1,4 +1,10 @@
 
 export interface CakesModel {
-  ItemId: number;
+  itemId: string;
+  name: string;
+  itemType: number;
+  description: string;
+  price: number;
+  image: string;
+  storeIds: string[];
 }
