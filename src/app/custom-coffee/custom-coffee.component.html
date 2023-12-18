@@ -1,0 +1,17 @@
+<form (ngSubmit)="createCustomCoffee()" [formGroup]="customCoffeeForm">
+  <label for="ingredient">Select Ingredient:</label>
+  <select formControlName="ingredient" id="ingredient">
+    <option *ngFor="let ingredient of ingredients" [value]="ingredient.ingredientId">{{ ingredient.name }}</option>
+  </select>
+
+  <label for="quantity">Enter Quantity:</label>
+  <input type="number" formControlName="quantity" id="quantity" />
+
+  <button type="button" (click)="addIngredient()">Add Ingredient</button>
+
+  <ul>
+    <li *ngFor="let item of customCoffeeItems">{{ item.ingredientName }} - {{ item.quantity }}</li>
+  </ul>
+
+  <button type="submit">Save Custom Coffee</button>
+</form>
