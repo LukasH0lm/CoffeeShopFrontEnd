@@ -10,28 +10,27 @@
 
 
 <div class="selectBodyClass">
-<mat-grid-list cols="5" rowHeight="300px">
-  <mat-grid-tile *ngFor="let store of stores" (click)="navigateToCoffeeTypePageAndSetCurrentStore(store)">
-    {{store.name}}
+  <mat-grid-list cols="5" rowHeight="300px">
+    <mat-grid-tile *ngFor="let store of stores" (click)="navigateToCoffeeTypePageAndSetCurrentStore(store)">
+      {{ store.name }}
 
 
-  </mat-grid-tile>
-</mat-grid-list>
-
+    </mat-grid-tile>
+  </mat-grid-list>
 
 
   <ng-template #template>
     <h3>Du har varer i kurven, som ikke hører til den valgte forretning</h3>
 
     <div>
-      <button mat-raised-button (click)="changeStoreAndResetBasket(selectedStore!)" >Skift forretning og tøm kurv</button>
+      <button mat-raised-button (click)="changeStoreAndResetBasket(selectedStore!)">Skift forretning og tøm kurv
+      </button>
     </div>
     <div>
-      <button mat-raised-button (click)="goBackToCurrentStore()" >Behold varer og gå til  tidligere forretning</button>
+      <button mat-raised-button (click)="goBackToCurrentStore()">Behold varer og gå til tidligere forretning</button>
     </div>
 
   </ng-template>
-
 
 
 </div>

@@ -1,5 +1,3 @@
-
-
 export interface CoffeeBeansModel {
   Origin: string;
   RoastLevel: string;

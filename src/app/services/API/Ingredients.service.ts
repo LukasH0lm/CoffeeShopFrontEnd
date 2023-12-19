@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {IngredientsModel} from "../../models/Ingredients.model";
 import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
@@ -16,8 +16,9 @@ export class IngredientsService {
   private ingredients = this.http.get<IngredientsModel[]>(this.baseUrl + "/Ingredient");
 
   currentCoffee: Observable<CoffeeCupsModel | undefined> | undefined;
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient) {
+  }
 
 
   getIngredients() {
@@ -30,12 +31,9 @@ export class IngredientsService {
 
   }
 
-  getIngredientArray(){
+  getIngredientArray() {
     return this.ingredients.subscribe(ingredients => ingredients as IngredientsModel[]);
   }
-
-
-
 
 
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatGridListModule } from '@angular/material/grid-list';
+import {CommonModule} from '@angular/common';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CurrentCoffeeService} from "../services/currentcoffee.service";
 import {CoffeeCupsModel} from "../models/CoffeeCups.model";
@@ -18,24 +18,19 @@ import {CurrentStoreService} from "../services/currentStore.service";
   templateUrl: './coffeeselectionpage.component.html',
   styleUrl: './coffeeselectionpage.component.css'
 })
-export class CoffeeselectionpageComponent implements OnInit{
+export class CoffeeselectionpageComponent implements OnInit {
 
   coffeesCups: CoffeeCupsModel[] = [];
   CoffeeCupsByStore: CoffeeCupsModel | any;
-  stores : StoresModel[] = [];
+  stores: StoresModel[] = [];
   companyName: string;
 
 
-
-  constructor(private currentCoffeeService: CurrentCoffeeService, private coffeeCupsService: CoffeeCupsService, private storesService : StoresService, private currentStoreService : CurrentStoreService, private route: ActivatedRoute, private router: Router) {
+  constructor(private currentCoffeeService: CurrentCoffeeService, private coffeeCupsService: CoffeeCupsService, private storesService: StoresService, private currentStoreService: CurrentStoreService, private route: ActivatedRoute, private router: Router) {
 
     this.companyName = this.route.snapshot.params['companyName'];
 
   }
-
-
-
-
 
 
   ngOnInit() {
@@ -46,12 +41,12 @@ export class CoffeeselectionpageComponent implements OnInit{
       stores: this.storesService.getStores(),
 
     }).subscribe(
-      ({ coffees, stores }) => {
+      ({coffees, stores}) => {
         this.coffeesCups = coffees;
         this.stores = stores;
 
 
-       this.getCoffeeShopsForEachStore();
+        this.getCoffeeShopsForEachStore();
 
 
       },
@@ -60,7 +55,6 @@ export class CoffeeselectionpageComponent implements OnInit{
       }
     );
   }
-
 
 
   getCoffeeShopsForEachStore() {
@@ -78,9 +72,6 @@ export class CoffeeselectionpageComponent implements OnInit{
   }
 
 
-
-
-
   navigateToPremadeCoffeePage(coffeeCup: CoffeeCupsModel) {
 
     this.currentCoffeeService.setCurrentCoffeeByName(coffeeCup.name);
@@ -88,8 +79,6 @@ export class CoffeeselectionpageComponent implements OnInit{
     this.router.navigate(['/Business', this.companyName, 'CoffeeType', 'CoffeeSelection', coffeeCup.name]);
 
   }
-
-
 
 
 }

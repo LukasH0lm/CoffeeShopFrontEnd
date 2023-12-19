@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {Router} from "@angular/router";
 import {MatButtonModule} from '@angular/material/button';
 
@@ -12,7 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './frontpage.component.css'
 })
 export class FrontpageComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
 
   navigateToSelectPage() {

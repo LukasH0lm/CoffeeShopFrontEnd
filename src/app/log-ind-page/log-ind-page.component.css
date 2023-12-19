@@ -1,23 +1,28 @@
-.loginClass{
+.loginClass {
   text-align: center;
   padding: 100px 700px 100px 700px;
 }
-.loginBorderClass{
+
+.loginBorderClass {
   border-style: outset;
   padding-bottom: 50px;
   padding-top: 50px;
   background-color: #c6ae9d;
 }
-#passwordText{
+
+#passwordText {
   margin-left: -40px;
 }
-.loginClass label{
+
+.loginClass label {
   padding-right: 10px;
 
 }
-.loginClass form{
+
+.loginClass form {
   margin-left: -50px;
 }
-.loginButtonClass{
+
+.loginButtonClass {
   padding-bottom: 20px;
 }

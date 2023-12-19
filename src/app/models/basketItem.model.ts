@@ -1,7 +1,7 @@
 import {ItemModel} from "./Item.model";
 
 export interface BasketItemModel {
-  item : ItemModel;
+  item: ItemModel;
   quantity: number;
   subTotal: number;
 }

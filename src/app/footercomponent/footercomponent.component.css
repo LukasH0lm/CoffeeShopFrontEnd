@@ -5,50 +5,61 @@ footer {
   height: 200px;
   background-color: #8d676a;
 }
-.footerClass{
+
+.footerClass {
   background-color: #8d676a;
 }
-.adresseLinksClass{
-margin-left: 100px;
+
+.adresseLinksClass {
+  margin-left: 100px;
   background-color: #8d676a;
   color: #c6ae9d;
 }
-.infoSectionClass{
+
+.infoSectionClass {
   margin-left: 500px;
   margin-top: -150px;
   background-color: #8d676a;
   color: #c6ae9d;
 }
-.quickLinksClass{
+
+.quickLinksClass {
   margin-top: -80px;
   margin-left: 800px;
   background-color: #8d676a;
   color: #c6ae9d;
 }
+
 .quickLinksClass a {
   color: black;
   text-decoration: none;
   color: #c6ae9d;
 }
-.contactClass{
+
+.contactClass {
   margin-left: 1100px;
   margin-top: -81px;
   background-color: #8d676a;
   color: #c6ae9d;
 }
-#AdresseHeaderId{
+
+#AdresseHeaderId {
   font-size: larger;
 }
-#infoSectionHeaderId{
+
+#infoSectionHeaderId {
   font-size: larger;
 }
-#quickLinksId{
+
+#quickLinksId {
   font-size: larger;
 }
-#contactHeaderId{
+
+#contactHeaderId {
   font-size: larger;
 }
-.fillerClass{
+
+.fillerClass {
   background-color: #8d676a;
   margin-top: -140px;
   color: #8d676a;

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {BasketService} from "../services/basket.service";
@@ -14,10 +14,6 @@ import {interval, switchMap, takeWhile} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 
-
-
-
-
 @Component({
   selector: 'app-orderpage',
   standalone: true,
@@ -25,7 +21,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './orderpage.component.html',
   styleUrl: './orderpage.component.css'
 })
-export class OrderpageComponent implements OnInit{
+export class OrderpageComponent implements OnInit {
   companyName: string;
   orderItems: BasketItemModel | any;
   completedOrder: OrdersModel = {
@@ -39,13 +35,9 @@ export class OrderpageComponent implements OnInit{
   uiTotalPrice: number = 0;
 
 
-
   constructor(private route: ActivatedRoute, private basketService: BasketService, private ordersService: OrdersService,
               private currentUser: CurrentUserService, private currentStoreService: CurrentStoreService,
-              private router: Router, private snackBar: MatSnackBar)
-  {
-
-
+              private router: Router, private snackBar: MatSnackBar) {
 
 
     this.companyName = this.route.snapshot.params['companyName'];
@@ -53,52 +45,45 @@ export class OrderpageComponent implements OnInit{
   }
 
 
-
-
-
-
   completeOrder() {
 
 
-   if (this.currentUser.getCurrentUser() !== undefined) {
-    this.completedOrder.storeId = <string>this.currentStoreService.getCurrentStore()?.storeId;
-    this.completedOrder.userId = <string>this.currentUser.getCurrentUser()?.userId;
-    this.completedOrder.totalAmount = this.basketService.getTotal();
-    this.completedOrder.orderDetails = this.orderItems.map((item: BasketItemModel) => {
-      return {
-        itemId: item.item.itemId,
-        quantity: item.quantity,
-        subtotal: item.subTotal
-      }
-    });
+    if (this.currentUser.getCurrentUser() !== undefined) {
+      this.completedOrder.storeId = <string>this.currentStoreService.getCurrentStore()?.storeId;
+      this.completedOrder.userId = <string>this.currentUser.getCurrentUser()?.userId;
+      this.completedOrder.totalAmount = this.basketService.getTotal();
+      this.completedOrder.orderDetails = this.orderItems.map((item: BasketItemModel) => {
+        return {
+          itemId: item.item.itemId,
+          quantity: item.quantity,
+          subtotal: item.subTotal
+        }
+      });
 
-    console.log("completedOrder: ", this.completedOrder)
-    this.basketService.clearCart();
-
-
-     this.ordersService.postOrder(this.completedOrder)
-       .subscribe((response : any) => {
-         console.log("response: ", response);
-
-         this.checkOrderStatus(response.orderId);
-
-         this.router.navigate(['Home']);
-       });
-   } else {
-     console.log("You need to log in to complete an order!")
-     this.router.navigate(['Logind']);
+      console.log("completedOrder: ", this.completedOrder)
+      this.basketService.clearCart();
 
 
+      this.ordersService.postOrder(this.completedOrder)
+        .subscribe((response: any) => {
+          console.log("response: ", response);
 
-   }
+          this.checkOrderStatus(response.orderId);
+
+          this.router.navigate(['Home']);
+        });
+    } else {
+      console.log("You need to log in to complete an order!")
+      this.router.navigate(['Logind']);
 
 
+    }
 
 
   }
 
 
-  orderStatusSnackBar(message : string) {
+  orderStatusSnackBar(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 0, // Hvis den er 0 bliver den åben indtil brugeren lukker den
       verticalPosition: 'top',
@@ -107,7 +92,7 @@ export class OrderpageComponent implements OnInit{
     });
   }
 
-  checkOrderStatus(orderId : string) {
+  checkOrderStatus(orderId: string) {
 
     interval(5000)
       .pipe(

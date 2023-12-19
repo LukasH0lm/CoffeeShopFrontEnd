@@ -1,5 +1,5 @@
 import {Component, TemplateRef} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 import {CurrentCoffeeService} from "../services/currentcoffee.service";
@@ -8,14 +8,13 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {CoffeeCupsModel} from "../models/CoffeeCups.model";
-import {Observable } from "rxjs";
+import {Observable} from "rxjs";
 
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {CurrentStoreService} from "../services/currentStore.service";
 import {CakesModel} from "../models/Cakes.model";
 import {CoffeeCupsService} from "../services/API/CoffeeCups.service";
 import {MatRadioModule} from "@angular/material/radio";
-
 
 
 @Component({
@@ -34,8 +33,7 @@ export class PremadecoffeepageComponent {
   isBaristaMaestro: boolean = false;
 
 
-
-  constructor(private currentCoffeeService: CurrentCoffeeService, private dialog: MatDialog, private basketService: BasketService, private route: ActivatedRoute, private coffeeCupsService : CoffeeCupsService, private currentStoreService : CurrentStoreService) {
+  constructor(private currentCoffeeService: CurrentCoffeeService, private dialog: MatDialog, private basketService: BasketService, private route: ActivatedRoute, private coffeeCupsService: CoffeeCupsService, private currentStoreService: CurrentStoreService) {
 
     const routingCoffeeName = this.route.snapshot.params['coffeeName'];
 
@@ -45,18 +43,14 @@ export class PremadecoffeepageComponent {
 
     this.coffeeCup = this.currentCoffeeService.getCurrentCoffee();
 
-    this.currentCoffeeService.getCurrentCoffee()?.subscribe( coffeeCup => {
-     this.cakes = this.coffeeCupsService.getCakesByCoffeeCup(coffeeCup?.itemId);
+    this.currentCoffeeService.getCurrentCoffee()?.subscribe(coffeeCup => {
+      this.cakes = this.coffeeCupsService.getCakesByCoffeeCup(coffeeCup?.itemId);
     })
 
     this.isBaristaMaestro = this.currentStoreService.getCurrentStore()?.name === "BaristaMaestro";
 
 
-
-
   }
-
-
 
 
   openDialog(templateRef: TemplateRef<any>): void {
@@ -80,7 +74,6 @@ export class PremadecoffeepageComponent {
     }
 
   }
-
 
 
 }

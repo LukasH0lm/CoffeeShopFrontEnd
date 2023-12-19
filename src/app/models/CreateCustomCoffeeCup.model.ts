@@ -12,8 +12,4 @@ export interface CreateCustomCoffeeModel {
   ingredients: CreateIngredientsModel[];
 
 
-
-
-
-
 }

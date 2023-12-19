@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {UserModel} from "../../models/User.model";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -10,15 +10,16 @@ import {Observable} from "rxjs";
 export class UsersService {
 
   private baseUrl = "http://localhost:5196/api";
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient) {
+  }
 
 
   createLogin(customer: UserModel | undefined) {
     return this.http.post(this.baseUrl + "/users/add", customer);
   }
 
-  getUserByEmail(email: string) : Observable<UserModel> {
+  getUserByEmail(email: string): Observable<UserModel> {
     return this.http.get<UserModel>(this.baseUrl + "/users/email/" + email)
   }
 
@@ -37,7 +38,6 @@ export class UsersService {
     });
 
 
-
     if (response.status >= 400) {
 
       return false;
@@ -50,9 +50,6 @@ export class UsersService {
 
     return false;
   }
-
-
-
 
 
 }

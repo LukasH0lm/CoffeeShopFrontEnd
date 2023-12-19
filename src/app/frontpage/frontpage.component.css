@@ -1,23 +1,24 @@
-.coffeeTextBody{
+.coffeeTextBody {
   padding-bottom: 40px;
 }
-.coffeeTextBody img{
+
+.coffeeTextBody img {
   padding-left: 600px;
 }
-.coffeeTextBody h1{
+
+.coffeeTextBody h1 {
   text-align: center;
   font-size: 25px;
   padding-left: 200px;
   padding-right: 200px;
 }
-#coffeTextBodyBottom{
+
+#coffeTextBodyBottom {
   margin-left: 900px;
 }
 
 
-
-
-.socialMediaTextBody h1{
+.socialMediaTextBody h1 {
   text-align: center;
   font-size: 25px;
   margin-top: -500px;
@@ -29,19 +30,21 @@
   background-color: #8d676a;
   opacity: 95%;
 }
-.socialMediaTextBodybox{
+
+.socialMediaTextBodybox {
   padding-left: 600px;
   padding-right: 600px;
 }
 
 
-.socialMediaTextBody img{
+.socialMediaTextBody img {
   width: 900px;
   height: 600px;
   padding-left: 500px;
 
 }
-.socialMediaTextBodyBottomClass{
+
+.socialMediaTextBodyBottomClass {
   margin-left: 900px;
   margin-top: -200px;
 }

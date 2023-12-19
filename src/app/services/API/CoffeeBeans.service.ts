@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CoffeeBeansModel} from "../../models/CoffeeBeans.model";
 import {HttpClient} from "@angular/common/http";
 
@@ -9,15 +9,13 @@ import {HttpClient} from "@angular/common/http";
 export class CoffeeBeansService {
 
   private baseUrl = "http://localhost:5196/api/CoffeeBeans";
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient) {
+  }
 
 
   // Midlertidig data indtil api virker :)
-  private coffeeBeans: CoffeeBeansModel[] = [
-
-  ];
-
+  private coffeeBeans: CoffeeBeansModel[] = [];
 
 
   getCoffeeBeans(): CoffeeBeansModel[] {

@@ -1,4 +1,3 @@
-
 export interface ItemModel {
   itemType: number;
   description: string;

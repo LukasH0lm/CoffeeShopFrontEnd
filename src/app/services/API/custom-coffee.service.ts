@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CustomCoffeeModel } from '../../models/CustomCoffee.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {CustomCoffeeModel} from '../../models/CustomCoffee.model';
 import {CreateCustomCoffeeModel} from "../../models/CreateCustomCoffeeCup.model";
 
 @Injectable({
@@ -13,7 +13,8 @@ export class CustomCoffeeService {
 
   private customCoffees = this.http.get<CustomCoffeeModel[]>(`${this.baseUrl}/CustomCoffee`);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getCustomCoffees(): Observable<CustomCoffeeModel[]> {
     return this.customCoffees;

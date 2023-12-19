@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { CustomCoffeeService } from '../services/API/custom-coffee.service';
-import { IngredientsModel } from '../models/Ingredients.model';
-import { CustomCoffeeModel } from '../models/CustomCoffee.model';
+import {CustomCoffeeService} from '../services/API/custom-coffee.service';
+import {IngredientsModel} from '../models/Ingredients.model';
+import {CustomCoffeeModel} from '../models/CustomCoffee.model';
 import {IngredientsService} from "../services/API/Ingredients.service";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CreateCustomCoffeeModel} from "../models/CreateCustomCoffeeCup.model";
 import {CreateIngredientsModel} from "../models/CreateIngredients.model";
 import {CurrentUserService} from "../services/currentUser.service";
 import {CurrentStoreService} from "../services/currentStore.service";
+
 @Component({
   selector: 'app-custom-coffee',
   templateUrl: './custom-coffee.component.html',
@@ -25,7 +26,8 @@ export class CustomCoffeeComponent implements OnInit {
   CurrentUser: any;
   totalPrice: number = 0;
 
-  constructor(private fb: FormBuilder, private customCoffeeService: CustomCoffeeService, private ingredientService : IngredientsService, private userService : CurrentUserService, private currentStoreService : CurrentStoreService) {}
+  constructor(private fb: FormBuilder, private customCoffeeService: CustomCoffeeService, private ingredientService: IngredientsService, private userService: CurrentUserService, private currentStoreService: CurrentStoreService) {
+  }
 
   ngOnInit(): void {
 
@@ -69,7 +71,7 @@ export class CustomCoffeeComponent implements OnInit {
         this.customCoffeeItems[existingIndex].quantity += quantity;
       } else {
         // If the ingredient doesn't exist, add it to the list
-        this.customCoffeeItems.push({ ingredient, quantity, ingredientName });
+        this.customCoffeeItems.push({ingredient, quantity, ingredientName});
       }
 
       this.calculateTotalPrice();
@@ -89,11 +91,7 @@ export class CustomCoffeeComponent implements OnInit {
     // SUUUUNNENEE HVORDAN FUCK VIRKER COOOOKIIEIEESS??? (╯°□°)╯︵ ┻━┻
 
 
-
-
-
     const customerId = this.CurrentUser;
-
 
 
     const customCoffee: CreateCustomCoffeeModel = {

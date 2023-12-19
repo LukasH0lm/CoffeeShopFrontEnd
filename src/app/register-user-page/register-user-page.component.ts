@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 import {UsersService} from "../services/API/Users.service";
 import {Router} from "@angular/router";
@@ -24,7 +24,7 @@ export class RegisterUserPageComponent {
     userId: string;
     email: string
     isAdmin: boolean;
-  }= {
+  } = {
     firstName: '',
     lastName: '',
     password: '',

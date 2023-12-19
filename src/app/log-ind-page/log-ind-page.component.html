@@ -1,5 +1,3 @@
-
-
 <div class="loginClass">
   <div class="loginBorderClass">
     <h2>Log Ind</h2>
@@ -12,18 +10,19 @@
     </form>
 
 
-      <div class="loginButtonClass">
-        <button id="logindButtonId" mat-raised-button color="primary" (click)="login()">Log ind</button>
-      </div>
+    <div class="loginButtonClass">
+      <button id="logindButtonId" mat-raised-button color="primary" (click)="login()">Log ind</button>
+    </div>
 
     <div>
       <mat-checkbox id="rememberMeCheckboxId" [(ngModel)]="rememberMeCheckbox">Husk mig</mat-checkbox>
     </div>
 
 
-      <div class="createLoginButtonClass">
-        <button id="createLogindButtonId" mat-raised-button color="primary" routerLink="/RegisterBruger" >Opret Bruger</button>
-      </div>
+    <div class="createLoginButtonClass">
+      <button id="createLogindButtonId" mat-raised-button color="primary" routerLink="/RegisterBruger">Opret Bruger
+      </button>
+    </div>
 
   </div>
 </div>

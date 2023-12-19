@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {BasketPopupService} from "../basketcomponent/basketpopup.service";
 import {MatButtonModule} from "@angular/material/button";
@@ -7,7 +7,7 @@ import {MatDialogClose} from "@angular/material/dialog";
 import {MatIconModule} from '@angular/material/icon';
 import {CurrentUserService} from "../services/currentUser.service";
 import {MatMenuModule, MatMenuTrigger} from "@angular/material/menu";
-import { ViewChild } from '@angular/core';
+import {ViewChild} from '@angular/core';
 import {CookiesService} from "../services/cookies.service";
 import {CurrentStoreService} from "../services/currentStore.service";
 
@@ -18,7 +18,7 @@ import {CurrentStoreService} from "../services/currentStore.service";
   templateUrl: './headercomponent.component.html',
   styleUrl: './headercomponent.component.css'
 })
-export class HeadercomponentComponent implements OnInit{
+export class HeadercomponentComponent implements OnInit {
 
   @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
 
@@ -27,7 +27,7 @@ export class HeadercomponentComponent implements OnInit{
   isAdmin: boolean = false;
 
 
-  constructor(private popupBasketService : BasketPopupService, private currentUserService : CurrentUserService, private cookiesService : CookiesService, private router : Router, private currentStoreService : CurrentStoreService) {
+  constructor(private popupBasketService: BasketPopupService, private currentUserService: CurrentUserService, private cookiesService: CookiesService, private router: Router, private currentStoreService: CurrentStoreService) {
 
 
     this.currentUserService.updateLoginStatus();
@@ -37,17 +37,13 @@ export class HeadercomponentComponent implements OnInit{
   }
 
 
-
   openCartPopup(): void {
 
     this.popupBasketService.openCartPopup();
   }
 
 
-
-
-
-  logOutButtonClicked() : void {
+  logOutButtonClicked(): void {
 
     this.currentUserService.clearCurrentUser();
 
@@ -61,18 +57,17 @@ export class HeadercomponentComponent implements OnInit{
     this.currentUserService.updateCurrentUserName();
 
   }
+
   userButtonClicked(): void {
 
     if (this.currentUserService.getCurrentUser() == undefined) {
       this.router.navigate(['Logind']);
-    }
-    else {
+    } else {
 
       // Do nothing for now
     }
 
   }
-
 
 
   ngOnInit(): void {
@@ -94,10 +89,6 @@ export class HeadercomponentComponent implements OnInit{
       });
 
   }
-
-
-
-
 
 
 }

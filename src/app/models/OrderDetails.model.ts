@@ -1,4 +1,3 @@
-
 export interface OrderDetailsModel {
 
   itemId: string;

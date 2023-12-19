@@ -7,7 +7,7 @@
         Kaffe-navn: {{ items.item.name }}
       </div>
       <div>
-        Pris: {{ items.item.price*items.quantity}},-
+        Pris: {{ items.item.price * items.quantity }},-
       </div>
       <div>
         Antal: {{ items.quantity }}x
@@ -23,12 +23,10 @@
   </div>
 
 
-     <button mat-raised-button color="primary" (click)="completeOrder()" >Bestil</button>
+  <button mat-raised-button color="primary" (click)="completeOrder()">Bestil</button>
 
 
 </div>
-
-
 
 
 </body>

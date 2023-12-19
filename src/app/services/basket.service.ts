@@ -5,15 +5,12 @@ import {BasketItemModel} from "../models/basketItem.model";
 import {BehaviorSubject, Observable} from "rxjs";
 
 
-
-
 @Injectable({
   providedIn: 'root',
 })
 export class BasketService {
 
   private basket: BasketItemModel[] = [];
-
 
 
   private totalPriceSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
@@ -24,7 +21,6 @@ export class BasketService {
   constructor(private cookiesService: CookiesService) {
 
   }
-
 
 
   loadBasketData() {
@@ -39,7 +35,6 @@ export class BasketService {
 
     this.updateTotalPrice();
   }
-
 
 
   updateTotalPrice() {
@@ -66,7 +61,7 @@ export class BasketService {
       existingItem.subTotal = existingItem.quantity * currentItem.price;
     } else {
       console.log('Item not in the basket. Adding:', currentItem);
-      this.basket.push({ item: currentItem, quantity: 1, subTotal: currentItem.price});
+      this.basket.push({item: currentItem, quantity: 1, subTotal: currentItem.price});
     }
 
 
@@ -78,9 +73,6 @@ export class BasketService {
   }
 
 
-
-
-
   getItems(): BasketItemModel[] {
     return this.basket;
   }
@@ -90,7 +82,6 @@ export class BasketService {
     this.basket = [];
     this.totalPriceSubject.next(0);
     this.cookiesService.setCookieForSevenDays('basketCookie', JSON.stringify(this.basket))
-
 
 
   }
@@ -114,7 +105,7 @@ export class BasketService {
         console.log('Item removed from basket:', existingItem);
 
       }
-    }else {
+    } else {
       console.log('Item not in the basket');
     }
 
@@ -123,7 +114,6 @@ export class BasketService {
     console.log('Updated basket:', this.basket);
 
   }
-
 
 
 }

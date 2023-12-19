@@ -32,7 +32,6 @@ export class OrdersService {
 
     return this.http.get<any>(this.baseUrl + orderId).pipe(
       map(order => order.isAccepted)
-
     );
   }
 

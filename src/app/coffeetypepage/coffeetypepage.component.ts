@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatButtonModule} from "@angular/material/button";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-coffeetypepage',
   standalone: true,
-    imports: [CommonModule, MatButtonModule],
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './coffeetypepage.component.html',
   styleUrl: './coffeetypepage.component.css'
 })
@@ -26,8 +26,6 @@ export class CoffeetypepageComponent {
   navigateToCustomCoffeePage() {
     this.router.navigate(['/Business', this.companyName, 'CoffeeType', 'CustomCoffee']);
   }
-
-
 
 
 }

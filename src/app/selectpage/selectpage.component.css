@@ -1,28 +1,33 @@
 mat-grid-tile {
   margin-top: 50px;
-  background-color : #8d676a;
+  background-color: #8d676a;
   align-content: center;
   justify-content: center;
   text-align: center;
   border-radius: 25px;
 }
+
 mat-grid-tile:hover {
   background-color: #b3968c;
 }
+
 .selectBodyClass {
- margin-left: 500px;
+  margin-left: 500px;
 }
+
 #selectBodyHeader1 {
   padding-top: 100px;
   margin-left: 550px;
   color: #8d676a;
 }
+
 #selectBodyHeader2 {
   color: #8d676a;
   margin-left: 1235px;
   margin-top: -77px;
 }
-#selectBodyImg{
+
+#selectBodyImg {
   width: 70px;
   height: 90px;
   margin-left: 1160px;

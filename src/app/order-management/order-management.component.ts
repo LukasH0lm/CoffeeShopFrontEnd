@@ -1,7 +1,7 @@
 // order-management.component.ts
 
-import { Component, OnInit } from '@angular/core';
-import { OrdersService } from '../services/API/Orders.service';
+import {Component, OnInit} from '@angular/core';
+import {OrdersService} from '../services/API/Orders.service';
 import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 
 @Component({
@@ -18,7 +18,8 @@ import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 export class OrderManagementComponent implements OnInit {
   pendingOrders: any[] = [];
 
-  constructor(private orderService: OrdersService) {}
+  constructor(private orderService: OrdersService) {
+  }
 
   ngOnInit(): void {
     this.orderService.getPendingOrders().subscribe((orders: any[]) => {

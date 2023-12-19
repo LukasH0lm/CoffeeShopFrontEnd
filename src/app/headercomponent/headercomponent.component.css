@@ -1,35 +1,36 @@
-.kaffeforeninglogoClass{
+.kaffeforeninglogoClass {
   height: 80px;
   width: 80px;
 }
-.headerLinksClass{
+
+.headerLinksClass {
   padding-left: 100px;
   margin-top: -42px;
 }
-.headerLinksClass a{
+
+.headerLinksClass a {
   cursor: default;
   color: #c6ae9d;
-  text-decoration:none;
+  text-decoration: none;
   padding: 10px;
   font-family: "Lucida Console";
   font-size: 20px;
 }
 
-.HeaderBasket{
+.HeaderBasket {
 
   padding-left: 1740px;
   margin-top: -47px;
   color: #c6ae9d;
 }
 
-.HeaderBackgrund{
+.HeaderBackgrund {
   background-color: #8d676a;
   height: 100px;
 }
 
 
-
-.HeaderProfilLogind{
+.HeaderProfilLogind {
 
   padding-left: 1840px;
   margin-top: -30px;

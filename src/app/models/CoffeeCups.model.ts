@@ -4,17 +4,13 @@ export interface CoffeeCupsModel {
 
   itemId: string;
   name: string;
-  size : number;
+  size: number;
   itemType: number;
   description: string;
   price: number;
   image: string;
   storeIds: string[];
   ingredients: IngredientsModel[];
-
-
-
-
 
 
 }

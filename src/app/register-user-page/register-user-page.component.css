@@ -1,32 +1,40 @@
-.registerUserClass{
+.registerUserClass {
   text-align: center;
   padding: 100px 700px 100px 700px;
 }
-.registerUserBorderClass{
+
+.registerUserBorderClass {
   padding-bottom: 50px;
   padding-top: 50px;
   background-color: #c6ae9d;
   border-style: outset;
 }
-.registerUserClass label{
+
+.registerUserClass label {
   padding-right: 10px;
 }
-#userEmailText{
+
+#userEmailText {
   margin-left: -25px;
 }
-#userFirstName{
+
+#userFirstName {
   margin-left: -45px;
 }
-#userLastName{
+
+#userLastName {
   margin-left: -60px;
 }
-#userAddress{
+
+#userAddress {
   margin-left: -50px;
 }
-#userPNumber{
+
+#userPNumber {
   margin-left: -110px;
 }
-#userPasswordText{
+
+#userPasswordText {
   margin-left: -65px
 }
 

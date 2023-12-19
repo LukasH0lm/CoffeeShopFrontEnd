@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CoffeeCupIngredientsModel} from "../../models/CoffeeCupIngredients.model";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-
 
 
 @Injectable({
@@ -11,8 +10,9 @@ import {Observable} from "rxjs";
 export class CoffeeCupIngredientsService {
 
   private baseUrl = "http://localhost:5196/api";
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient) {
+  }
 
 
   getIngredientsByCoffeeCupId(id: string | undefined): Observable<CoffeeCupIngredientsModel[]> {
@@ -22,9 +22,6 @@ export class CoffeeCupIngredientsService {
 
 
   }
-
-
-
 
 
 }

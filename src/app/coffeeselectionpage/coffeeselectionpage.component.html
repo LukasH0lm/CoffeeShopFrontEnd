@@ -3,13 +3,13 @@
   <mat-grid-tile *ngFor="let coffeeCup of CoffeeCupsByStore" (click)="navigateToPremadeCoffeePage(coffeeCup)">
 
     <div>
-    <h1>{{ coffeeCup.name }}</h1>
+      <h1>{{ coffeeCup.name }}</h1>
 
-        {{ coffeeCup.description }}
+      {{ coffeeCup.description }}
 
 
       <div>
-        <img src="{{ coffeeCup.image }}"  width="125" height="125" alt="">
+        <img src="{{ coffeeCup.image }}" width="125" height="125" alt="">
       </div>
 
       <div>
