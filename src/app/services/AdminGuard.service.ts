@@ -30,8 +30,6 @@ export class AdminGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-
-
     if (this.isLoggedIn && this.isAdmin) {
       return true;
     } else {
